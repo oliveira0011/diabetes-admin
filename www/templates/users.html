@@ -1,0 +1,20 @@
+<ion-view view-title="Utilizadores">
+
+  <ion-nav-buttons side="secondary">
+    <a class="button button-clear button-positive"  href="/#/app/user">
+      <i class="icon ion-ios-plus-outline"></i>
+      Novo Utilizador
+    </a>
+  </ion-nav-buttons>
+  <ion-content id="pnlContent">
+    <ion-list class="list">
+      <ion-item class="item item-avatar" href="/#/app/user/{{user.id}}" class="row"
+                ng-repeat="user in users track by $index">
+        <img class="avatar {{user.uid}}" ng-src="{{user.profileImage  || '//:0' }}" ng-init="loadImage(user)">
+        <h2>{{user.firstName}} {{user.lastName}}</h2>
+        <p>{{user.email}}</p>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

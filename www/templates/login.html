@@ -1,0 +1,67 @@
+<ion-view class="">
+  <ion-content>
+    <form name="form" class="row responsive-sm" novalidate ng-submit="doLogin(form)">
+      <div class="col col-offset-33 col-33 list list-inset">
+        <div style="margin-top: 100px">
+          <div class="row row-center">
+            <h1 class="col col-center text-center positive">Diabetes Mellitus 2</h1>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label class="item item-input">
+                <!--<span class="positive input-label">Email</span>-->
+                <input type="text" ng-required="true" ng-model="loginData.username" name="username"
+                       placeholder="Email">
+              </label>
+
+              <div class="padding" ng-show="form.$submitted">
+                <p ng-show="form.$submitted && form.username.$error.required" class="invalid-input-label">Insira o seu
+                  email</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label class="item item-input">
+                <!--<span class="positive input-label">Palavra-Passe</span>-->
+                <input type="password" ng-required="true" ng-model="loginData.password" name="password"
+                       placeholder="Palavra-Passe">
+              </label>
+
+              <div class="padding" ng-show="form.$submitted">
+                <p ng-show="form.$submitted && form.password.$error.required" class="invalid-input-label">Insira a sua
+                  palavra passe</p>
+              </div>
+            </div>
+          </div>
+
+          <div ng-if="errorMessages" class="row">
+            <div class="col">
+              <div ng-repeat="errorMessage in errorMessages" class="text-center assertive">
+                {{errorMessage}}
+              </div>
+            </div>
+          </div>
+          <div ng-if="infoMessages" class="row">
+            <div class="col">
+              <div ng-repeat="infoMessage in infoMessages" class="text-center col balanced">
+                {{infoMessage}}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button class="button button-outline button-block button-positive" type="submit">Iniciar sessão</button>
+            </div>
+          </div>
+          <div class="row">
+            <button class="text-right button-small button-clear button-block button-positive" type="button"
+                    ng-click="resetPassword()">Esqueci-me da
+              minha palavra-passe
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

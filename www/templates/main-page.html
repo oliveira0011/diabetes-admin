@@ -1,0 +1,13 @@
+<ion-view>
+  <ion-content id="pnlContent" scroll="false">
+    <div id="btnPnl" class="row" ng-repeat="option in options">
+      <div class="col text-center">
+        <button style="min-width: 75%;"
+                ng-click="redirect(option)"
+                class="option-button button button-{{option.color}}">
+          <span class="col icon {{option.icon}}"/><span class="col">{{option.name}}</span>
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

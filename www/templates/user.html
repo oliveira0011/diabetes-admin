@@ -1,0 +1,25 @@
+<ion-view view-title="{{isNewUser ? 'Novo' : 'Editar'}} Utilizador">
+  <ion-content id="pnlContent">
+
+    <div class="row responsive-sm">
+      <div class="col col-offset-10 col-20">
+        <span ng-repeat="option in options">
+          <button ng-if="option !== currentOption" ng-click="option.callback()"
+                  class="button button-block button-positive">
+            {{option.description}}
+          </button>
+          <span ng-if="option === currentOption" class="button button-block button-light" style="cursor: default">
+            {{option.description}}
+          </span>
+
+        </span>
+        <button ng-if="newUser" ng-click="removeUser()" class="button button-block button-assertive">
+          Remover Utilizador
+        </button>
+      </div>
+      <div class="col col-50">
+        <ng-include src="currentOption.templateUrl"></ng-include>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,51 @@
+/* Empty. Add your own CSS if you like */
+.avatar {
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+  position: relative;
+
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+
+  -webkit-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0, 0, 0, .2);
+}
+
+
+.invalid-input {
+  border: 1px solid red;
+  color: #E00000;
+}
+
+.invalid-input-label {
+  color: #E00000;
+}
+
+.invalid-input ::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #E00000;
+}
+
+.invalid-input :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #E00000;
+  opacity: 1;
+}
+
+.invalid-input ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #E00000;
+  opacity: 1;
+}
+
+.invalid-input :-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #E00000;
+  opacity: 1;
+}
