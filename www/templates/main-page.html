@@ -1,12 +1,35 @@
 <ion-view>
-  <ion-content id="pnlContent" scroll="false">
-    <div id="btnPnl" class="row" ng-repeat="option in options">
-      <div class="col text-center">
-        <button style="min-width: 75%;"
-                ng-click="redirect(option)"
-                class="option-button button button-{{option.color}}">
-          <span class="col icon {{option.icon}}"/><span class="col">{{option.name}}</span>
-        </button>
+  <ion-content id="pnlContent" scroll="false" class="main-bg responsive-md">
+    <div class="row">
+      <div id="user-profile-pnl" class="col col-25">
+        <div class="left-border positive-border card">
+          <div class="item">
+            <h2 class="positive">Ivo Vieira Oliveira</h2>
+          </div>
+          <div class="item">
+            <img id="profileImageImg" class="center" src="/img/personal.png">
+          </div>
+          <div class="item item-divider">
+          </div>
+          <div class="item item-text-wrap">
+            <div class="row">
+              <div class="col positive">Data de Nascimento</div>
+              <div class="col text-right"> 14/09/1993 (22 anos)</div>
+            </div>
+            <div class="row">
+              <div class="col positive">Altura</div>
+              <div class="col text-right"> 171 cm</div>
+            </div>
+            <div class="row">
+              <div class="col positive">Peso</div>
+              <div class="col text-right"> 90 Kg</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <div id="user-data-pnl" class="col col-75">
       </div>
     </div>
   </ion-content>
