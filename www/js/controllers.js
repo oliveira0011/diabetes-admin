@@ -371,31 +371,114 @@ angular.module('app.controllers', [])
     }
   })
   .controller('MainCtrl', function ($scope, $timeout, $window, $state) {
-    $scope.options = [
-      {name: "Registos", color: "stable", icon: "ion-compose"},
-      {name: "Amigos", color: "stable", icon: "ion-person-stalker"},
-      {name: "Definições", color: "stable", icon: "ion-gear-a"}
-    ];
 
-    $scope.redirect = function () {
-      $state.go('app.search');
-    };
-    $scope.resizePnlBtns = function () {
-      var height = angular.element(document.querySelector('#pnlContent'))[0].clientHeight;
-      var newHeight = (height / $scope.options.length) - 15;
-      for (var counter = 0; counter < $scope.options.length; counter++) {
-        document.getElementsByClassName("option-button")[counter].style.height = newHeight + "px";
+    function getFormattedDate(timestamp) {
+      var date = new Date(timestamp);
+      var month = date.getMonth() + 1;
+      month = month < 10 ? '0' + month : month;
+      var year = date.getFullYear();
+      return month + '-' + year;
+    }
+
+    var handler = function (type, retrievedRecords) {
+      if (!retrievedRecords) {
+        return;
+      }
+      var arr = Object.keys(retrievedRecords).map(function (k) {
+        return retrievedRecords[k];
+      });
+      if (arr.length == 0) {
+        return;
+      }
+      var records = [];
+      var colors = {};
+      switch (type) {
+        case 1:
+          colors = {
+            fillColor: "#F15854",
+            strokeColor: "#B22222",
+            pointColor: "#800000",
+            pointStrokeColor: "#800000",
+          };
+          break;
+        case 2:
+          colors = {
+            fillColor: "#FAA43A",
+            strokeColor: "#FF8C00",
+            pointColor: "#FF4500",
+            pointStrokeColor: "#FF4500"
+          };
+          break;
+        case 3:
+          colors = {
+            fillColor: "#28a54c",
+            strokeColor: "#1e7c39",
+            pointColor: "#196730",
+            pointStrokeColor: "#196730"
+          };
+          break;
+      }
+      var labels = [];
+      arr.sort(function (a, b) {
+        return parseFloat(a.biomedicDate) - parseFloat(b.biomedicDate);
+      });
+
+      angular.forEach(arr, function (record) {
+        records.push(record.value);
+        labels.push(getFormattedDate(record.biomedicDate));
+      });
+      switch (type) {
+        case 1:
+          $scope.chartHemoglobin = {
+            labels: labels,
+            data: [records],
+            series: ['Hemoglobina'],
+            colours: [colors]
+          };
+          break;
+        case 2:
+          $scope.chartBloodPressure = {
+            labels: labels,
+            data: [records],
+            series: ['Tensão Arterial'],
+            colours: [colors]
+          };
+          break;
+        case 3:
+          $scope.chartCholesterol = {
+            labels: labels,
+            data: [records],
+            series: ['Colesterol'],
+            colours: [colors]
+          };
+          break;
+      }
+      if (!$scope.$$phase) {
+        $scope.$apply();
       }
     };
-    angular.element($window).on('resize', function () {
-      $scope.$apply(function () {
-        // ... perform your magic here
-        $scope.resizePnlBtns();
-      });
+
+    handler(1, {
+      "-K9ptTaJmSNUbvvTRRTK": {"biomedicDate": 1404203075994, "value": 10.5},
+      "-K9puWgWR2sCBx0A9Gtv": {"biomedicDate": 1451640548629, "value": 20},
+      "-K9q-PHQKG3nemNh-B2Y": {"biomedicDate": 1417859695625, "value": 5},
+      "-K9q-_3sXC9dghivhkfH": {"biomedicDate": 1423216534630, "value": 6},
+      "-K9q-oA-LpBolLBgqGtM": {"biomedicDate": 1430902595506, "value": 8},
+      "-K9q06nT-qzvB-QPBIcG": {"biomedicDate": 1391680685276, "value": 10},
+      "-K9rWiO2F7xQJvvxnE2N": {"biomedicDate": 1454778008430, "value": 12}
     });
-    $timeout(function () {
-      $scope.resizePnlBtns();
+    handler(2, {
+      "-K9q1Hgpv1xosuA3yxqh": {"biomedicDate": 1389002593610, "value": 220},
+      "-K9q1WUY9z9aBElrrWpO": {"biomedicDate": 1396775051271, "value": 200},
+      "-K9q1b0Ky4p-Yf8A3nxK": {"biomedicDate": 1404637472482, "value": 100},
+      "-K9s1lLUSbWzJgSU512k": {"biomedicDate": 1452194667977, "value": 12}
     });
+    handler(3, {
+      "-K9q4g-5u3P8TXaK6HFs": {"biomedicDate": 1449397075932, "value": 12},
+      "-K9q54Evm9X35vYzcHP6": {"biomedicDate": 1391681984508, "value": 1000}
+    });
+
+
   })
   .controller('BiometricosCtrl', function ($scope) {
     $scope.biometricos = [

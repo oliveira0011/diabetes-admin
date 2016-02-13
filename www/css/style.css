@@ -3,9 +3,21 @@
   Custom colors
 
 */
+.main-bar{
+  /*margin-top: 10px;*/
+  height:80px;
+}
+.main-bar .button{
+  margin-top: 10px;
+  margin-left: 20px;
+}
 
 .main-bg {
   background-color: #ecf0f5
+}
+
+.main-pnl {
+  margin-top: 20px;
 }
 
 .center {
@@ -20,16 +32,29 @@
   border-left-width: 5px;
 }
 
+.main-dark-bg {
+  background-color: #262626;
+}
+.main-dark-bg .item{
+  background-color: #262626;
+}
+.main-dark-bg .item-complex .item-content, .dark .item-radio .item-content {
+  background-color: transparent;
+  color: #FFF;
+}
+
 /* Empty. Add your own CSS if you like */
 .avatar {
-  width: 100px;
-  height: 100px;
-  float: left;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  margin-right: 0.5em;
-  position: relative;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 
+  -webkit-box-shadow: 0 0 0 3px #fff, 0 2px 5px 4px #999;
+  -moz-box-shadow: 0 0 0 3px #fff, 0 2px 5px 4px #999;
+  box-shadow: 0 0 0 1px #fff, 0 2px 5px 2px #999;
+}
+
+.avatar-border {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
