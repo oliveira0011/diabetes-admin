@@ -1,0 +1,21 @@
+<ion-modal-view ng-controller="UsersCtrl">
+  <ion-header-bar>
+    <h1 class="title positive">Escolha um Utente</h1>
+    <a class="button button-clear button-positive" href="/#/app/user">
+      <i class="icon ion-ios-plus-outline"></i>
+      Novo Utilizador
+    </a>
+  </ion-header-bar>
+  <ion-content id="pnlContent">
+    <ion-list class="list">
+      <ion-item class="item item-avatar" class="row"
+                ng-click="chooseUser(user)"
+                ng-repeat="user in users track by $index">
+        <img class="avatar {{user.uid}}" ng-src="{{user.profileImage  || '//:0' }}" ng-init="loadImage(user)">
+        <h2>{{user.firstName}} {{user.lastName}}</h2>
+        <p>{{user.email}}</p>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-modal-view>

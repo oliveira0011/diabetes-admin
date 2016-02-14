@@ -1,10 +1,85 @@
 angular.module('app.factories', [])
-  .factory('FirebaseFactory', function ($firebaseObject) {
-    var firebaseFactory = {};
-    firebaseFactory.getDBConnetion = function () {
-      return new Firebase("https://diabetes.firebaseio.com");
+  .factory('BiomedicType', function () {
+    return {
+      HEMOGLOBIN: 'hemoglobin',
+      BLOOD_PRESSURE: 'blood-pressure',
+      MIN_BLOOD_PRESSURE: 'min-blood-pressure',
+      MAX_BLOOD_PRESSURE: 'max-blood-pressure',
+      CHOLESTEROL: 'cholesterol',
+      WEIGHT: 'weight'
+    }
+  })
+  .factory('Biomedic', function () {
+    function Biomedic(biomedicDate, value) {
+      if (this.constructor === Biomedic) {
+        throw new Error("Can't instantiate abstract class!");
+      }
+      this.id = 0;
+      this.biomedicDate = biomedicDate;
+      this.value = value;
+    }
+
+    Biomedic.prototype.type = function () {
+      throw new Error("Abstract method!");
     };
-    return firebaseFactory;
+    return Biomedic;
+  })
+  .factory('Hemoglobin', function (Biomedic, BiomedicType) {
+    var Hemoglobin = function () {
+      Biomedic.apply(this, arguments);
+      this.type = BiomedicType.HEMOGLOBIN;
+    };
+    Hemoglobin.prototype = Object.create(Biomedic.prototype);
+    Hemoglobin.prototype.constructor = Hemoglobin;
+
+    return Hemoglobin;
+  })
+  .factory('BloodPressure', function (Biomedic) {
+    var BloodPressure = function () {
+      if (this.constructor === BloodPressure) {
+        throw new Error("Can't instantiate abstract class!");
+      }
+      Biomedic.apply(this, arguments);
+    };
+    BloodPressure.prototype = Object.create(Biomedic.prototype);
+    BloodPressure.prototype.constructor = BloodPressure;
+    return BloodPressure;
+  })
+  .factory('MinBloodPressure', function (BloodPressure, BiomedicType) {
+    var MinBloodPressure = function () {
+      BloodPressure.apply(this, arguments);
+      this.type = BiomedicType.MIN_BLOOD_PRESSURE;
+    };
+    MinBloodPressure.prototype = Object.create(BloodPressure.prototype);
+    MinBloodPressure.prototype.constructor = MinBloodPressure;
+    return MinBloodPressure;
+  })
+  .factory('MaxBloodPressure', function (BloodPressure, BiomedicType) {
+    var MaxBloodPressure = function () {
+      BloodPressure.apply(this, arguments);
+      this.type = BiomedicType.MAX_BLOOD_PRESSURE;
+    };
+    MaxBloodPressure.prototype = Object.create(BloodPressure.prototype);
+    MaxBloodPressure.prototype.constructor = MaxBloodPressure;
+    return MaxBloodPressure;
+  })
+  .factory('Cholesterol', function (Biomedic, BiomedicType) {
+    var Cholesterol = function () {
+      Biomedic.apply(this, arguments);
+      this.type = BiomedicType.CHOLESTEROL;
+    };
+    Cholesterol.prototype = Object.create(Biomedic.prototype);
+    Cholesterol.prototype.constructor = Cholesterol;
+    return Cholesterol;
+  })
+  .factory('Weight', function (Biomedic, BiomedicType) {
+    var Weight = function () {
+      Biomedic.apply(this, arguments);
+      this.type = BiomedicType.WEIGHT;
+    };
+    Weight.prototype = Object.create(Biomedic.prototype);
+    Weight.prototype.constructor = Weight;
+    return Weight;
   })
   .factory('UserFormFactory', function () {
     ///returns the form structure needed for the creation of a user
@@ -81,8 +156,20 @@ angular.module('app.factories', [])
             maxlength: 200
           },
           errorMessages: {
-            required: 'A morada do utente é obrigatório',
             maxlength: 'A morada do utente deve possuir, no máximo, 200 carateres',
+          }
+        },
+        height: {
+          placeHolder: 'Altura',
+          value: '',
+          type: 'number',
+          constraints: {
+            required: true,
+            min: 0
+          },
+          errorMessages: {
+            required: 'A altura do utente é obrigatória',
+            min: 'A altura do utente deve ser superior a 0 cm'
           }
         }
       };
@@ -106,9 +193,9 @@ angular.module('app.factories', [])
         };
       }
 
-      angular.forEach(structure, function(item){
-        if(item.constraints && item.constraints['required']){
-         item.required = true;
+      angular.forEach(structure, function (item) {
+        if (item.constraints && item.constraints['required']) {
+          item.required = true;
         }
       });
       console.log(structure);

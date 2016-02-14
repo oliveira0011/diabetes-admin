@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.factories', 'app.services', 'firebase', 'ngMessages', 'chart.js'])
+angular.module('app', ['ionic','ionic.service.core', 'app.controllers', 'app.directives', 'app.factories', 'app.services', 'firebase', 'ngMessages', 'chart.js'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -50,7 +50,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.factor
         url: '/main',
         views: {
           'menuContent': {
-            templateUrl: 'templates/main-page.html',
+            templateUrl: 'templates/user-main-page.html',
             controller: 'MainCtrl'
           }
         }
@@ -79,25 +79,6 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.factor
           'menuContent': {
             templateUrl: 'templates/user.html',
             controller: 'UserCtrl'
-          }
-        }
-      })
-      .state('app.biometricos', {
-        url: '/biometricos',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/biometricos-main.html',
-            controller: 'BiometricosCtrl'
-          }
-        }
-      })
-
-      .state('app.single', {
-        url: '/biometricos/:biometricoId',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/biometricos.html',
-            controller: 'PlaylistCtrl'
           }
         }
       });

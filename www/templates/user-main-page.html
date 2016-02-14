@@ -1,0 +1,92 @@
+<ion-view>
+  <ion-content id="pnlContent" class="main-bg">
+    <div class="row responsive-lg">
+      <div id="user-profile-pnl" class="col col-25">
+        <div class="left-border positive-border card">
+          <div class="item item-button-right">
+            <h2 class="positive">{{selectedUser.firstName}} {{selectedUser.lastName}}</h2>
+            <div class="buttons">
+              <button class="button-positive button button-outline ion-edit" ng-click="editUserPersonalData()"></button>
+              <button class="button-positive button button-outline ion-arrow-swap" ng-click="selectUser()"></button>
+            </div>
+          </div>
+          <div class="item">
+            <img id="profileImageImg" class="center avatar" width="200" height="200"
+                 ng-src="{{selectedUser.profileImage || '//:0' }}">
+          </div>
+          <div class="item item-divider">
+          </div>
+          <div class="item item-text-wrap">
+            <div class="row">
+              <div class="col positive">Data de Nascimento</div>
+              <div class="col text-right"> {{selectedUser.formattedBirthdate}}</div>
+            </div>
+            <div class="row">
+              <div class="col positive">Altura</div>
+              <div class="col text-right"> {{selectedUser.height}} cm</div>
+            </div>
+            <div class="row">
+              <div class="col positive">Peso</div>
+              <div class="col text-right"> {{selectedUser.weight}} Kg</div>
+            </div>
+            <div class="row">
+              <div class="col positive">Morada</div>
+              <div class="col text-right"> {{selectedUser.address}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="user-data-pnl" class="col col-75">
+        <div class="row responsive-lg">
+          <div class="col">
+            <div class="card">
+              <div class="item item-body">Hemoglobina
+                <canvas ng-if="!isEmpty(chartHemoglobin.data)" id="lineHemoglobin" class="chart chart-line"
+                        chart-data="chartHemoglobin.data"
+                        chart-labels="chartHemoglobin.labels" chart-legend="false"
+                        chart-series="chartHemoglobin.series" chart-colours="chartHemoglobin.colours">
+                </canvas>
+              </div>
+              <div class="item item-body" ng-if="isEmpty(chartHemoglobin.data)">
+                xpto
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <div class="item item-body">Tensão Arterial (Máxima / Mínima)
+                <canvas id="lineBloodPressure" class="chart chart-line" chart-data="chartBloodPressure.data"
+                        chart-labels="chartBloodPressure.labels" chart-legend="false"
+                        chart-series="chartBloodPressure.series" chart-colours="chartBloodPressure.colours">
+                </canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row responsive-lg">
+          <div class="col">
+            <div class="card">
+              <div class="item item-body">Colesterol
+                <canvas id="lineCholesterol" class="chart chart-line" chart-data="chartCholesterol.data"
+                        chart-labels="chartCholesterol.labels" chart-legend="false  "
+                        chart-series="chartCholesterol.series" chart-colours="chartCholesterol.colours">
+                </canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <div class="item item-body">Peso / IMC
+                <canvas id="lineWeight" class="chart chart-line" chart-data="chartWeight.data"
+                        chart-labels="chartWeight.labels" chart-legend="false"
+                        chart-series="chartWeight.series" chart-colours="chartWeight.colours">
+                </canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>
+<ng-include src="'templates/options-bar.html'"></ng-include>
+
