@@ -335,18 +335,92 @@ angular.module('app.services', [])
     };
     return BiomedicService;
   })
-  .service('MessageService', function ($rootScope, FirebaseService) {
+  .service('MessageService', function ($rootScope, FirebaseService, Message, $http) {
     var messagesService = {};
     var messages = [];
+
+    messagesService.addMessage = function (userId, message, handler) {
+      if (!message instanceof Message) {
+        throw 'The data passed to persist must be a Message class.';
+      }
+      if (!FirebaseService.isUserLogged()) {
+        console.log('invalidUser');
+        $rootScope.$broadcast('logoutUser');
+      }
+      var ref = FirebaseService.getDBConnection().child('messages').child("in").child(userId)
+        .push();
+      ref.set({
+        title: message.title,
+        body: message.body,
+        date: message.date,
+        type: message.type
+      });
+      FirebaseService.getDBConnection().child('messages').child("out").child(FirebaseService.getCurrentUserUid())
+        .child(ref.key())
+        .set({
+          title: message.title,
+          body: message.body,
+          date: message.date,
+          type: message.type
+        }, function () {
+          FirebaseService.getDBConnection().child("users").child(userId).child("deviceToken").on('value', function (snap) {
+            var remoteDeviceToken = snap.val();
+            if (!remoteDeviceToken || remoteDeviceToken == null) {
+              return;
+            }
+            console.log(remoteDeviceToken);
+            var d = JSON.stringify({
+              "tokens": [
+                remoteDeviceToken
+              ],
+              "notification": {
+                "alert": message.title,
+                "ios": {
+                  "badge": 1,
+                  "sound": "ping.aiff",
+                  "priority": 10,
+                  "contentAvailable": 1,
+                  "title": "Nova Mensagem",
+                  "payload": {
+                    "body": message.body
+                  }
+                },
+                "android": {
+                  "collapseKey": message.title,
+                  "delayWhileIdle": true,
+                  "timeToLive": 300,
+                  "title": "Nova Mensagem",
+                  "payload": {
+                    "body": message.body
+                  }
+                }
+              }
+            });
+            $http({
+              method: 'POST',
+              url: "https://push.ionic.io/api/v1/push/",
+              data: d,
+              headers: {
+                "Authorization": 'Basic ' + window.btoa("9838b15f3334b5c7ab4e27ddd5a370b2dcb2b2805be53fce"),
+                "Content-Type": "application/json",
+                "X-Ionic-Application-Id": '6cfedcfa'
+              }
+            }).error(function (e) {
+              console.log(e);
+            }).success(function (data, status) {
+              console.log(data);
+              console.log(status);
+            });
+          });
+        });
+    };
+
     messagesService.getMessages = function (handler) {
       if (!FirebaseService.isUserLogged()) {
         console.log('invalidUser');
         $rootScope.$broadcast('logoutUser');
       }
       var ref = FirebaseService.getDBConnection().child('messages').child(FirebaseService.getCurrentUserUid());
-      //ref.push({title:'Nova Recomendação do seu Médico', body:'Após rever a sua evolução dos seus dados biomédicos, decidi atualizar o seu nível de atividade física para níveis mais convenientes.'});
-      //ref.push({title:'Novo Evento: Caminhada pela cidade', body:'Foi convidado para o Evento \'Caminhada pela cidade\'.', link:'#app/event/1'});
-      //ref.push({title:'Novo Evento: Caminhada pela peneda', body:'Foi convidado para o Evento \'Caminhada pela peneda\'.', link:'#app/event/1'});
       ref.once('value', function (snap) {
         var value = snap.val();
         var retrievedNotifications = [];
@@ -374,4 +448,7 @@ angular.module('app.services', [])
       });
     };
     return messagesService;
+  })
+  .service('RecomendationService', function (FirebaseService, Recomendation, PhysicalActivity, PhysicalActivityType) {
+
   });

@@ -18,10 +18,14 @@ angular.module('app.controllers', [])
    */
   .controller('UsersCtrl', function ($scope, $timeout, $window, $state, UserFormFactory, FirebaseService, UsersService, $rootScope) {
     var dbConnection = FirebaseService.getDBConnection();
+    console.log(FirebaseService.getCurrentUserUid());
     dbConnection.child("doctors").child(FirebaseService.getCurrentUserUid()).child("users").once('value', function (snap) {
 
       $scope.users = {};
       $scope.usersIds = snap.val();
+      if (!$scope.usersIds || $scope.usersIds == null) {
+        return;
+      }
       $scope.usersIds.forEach(function (userId) {
         UsersService.getUser(userId, function (user) {
           $scope.users[user.id] = user;
@@ -458,7 +462,14 @@ angular.module('app.controllers', [])
     };
     $scope.openNotificationModal = function () {
       ModalService
-        .init('templates/notification-new.html', null)
+        .init('templates/notification-new-modal.html', $scope)
+        .then(function (modal) {
+          modal.show();
+        });
+    };
+    $scope.openPhysicalActivityModal = function () {
+      ModalService
+        .init('templates/physical-activity-recomendation-new-modal.html', $scope)
         .then(function (modal) {
           modal.show();
         });
@@ -691,28 +702,45 @@ angular.module('app.controllers', [])
       });
     };
   })
-  .controller('MessageCtrl', function ($scope, $ionicLoading, ModalService, Message) {
+  .controller('MessageCtrl', function ($scope, $ionicLoading, ModalService, MessageService, Message, MessageType) {
     $scope.message = {};
 
 
     $scope.closeModal = function () {
       ModalService.close();
     };
-
     $scope.sendMessage = function (form) {
       if (form.$invalid) {
         return;
       }
-
       $ionicLoading.show({template: "A enviar Mensagem ..."});
-
       var handler = function () {
         $ionicLoading.hide();
         ModalService.close();
       };
-      MessageService.storeMessage(new CustomMessage($scope.message.title, $scope.message.body), handler());
+      MessageService.addMessage($scope.selectedUser.id, new Message($scope.message.title, $scope.message.body, MessageType.CUSTOM), handler());
     }
+  })
+  .controller('PhysicalActivityCtrl', function ($scope, $ionicLoading, ModalService, RecomendationService, Recomendation, PhysicalActivityType) {
+    $scope.recomendation = {
+      exercises:[]
+    };
 
+
+    $scope.closeModal = function () {
+      ModalService.close();
+    };
+    $scope.sendMessage = function (form) {
+      if (form.$invalid) {
+        return;
+      }
+      $ionicLoading.show({template: "A gravar Recomendação ..."});
+      var handler = function () {
+        $ionicLoading.hide();
+        ModalService.close();
+      };
+      RecomendationService.addMessage($scope.selectedUser.id, new Recomendation($scope.recomendation.exercises), handler());
+    }
   })
   .controller('PlaylistCtrl', function ($scope, $stateParams) {
   });

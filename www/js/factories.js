@@ -9,6 +9,58 @@ angular.module('app.factories', [])
       WEIGHT: 'weight'
     }
   })
+  .factory('MessageType', function () {
+    return {
+      CUSTOM: 'custom',
+      ACTIVITY_REEVALUATION: 'activity-reevaluation',
+    }
+  })
+  .factory('PhysicalActivityType', function () {
+    return {
+      WALK: 'walk',
+      RUN: 'run'
+    }
+  })
+  .factory('PhysicalActivity', function (PhysicalActivityType) {
+    var PhysicalActivity = function (frequency, duration, type) {
+      this.id = 0;
+      this.frequency = frequency;
+      this.duration = duration;
+      if (!type instanceof PhysicalActivityType.constructor) {
+        throw 'The type must be a PhysicalActivityType';
+      }
+      this.type = type;
+    };
+    return PhysicalActivity;
+  })
+  .factory('Recomendation', function (PhysicalActivity) {
+    var Recomendation = function (exercises) {
+      this.id = 0;
+      this.exercises = [];
+      if (!type instanceof Array.constructor) {
+        throw 'The exercises must be an array';
+      }
+      for (var i = 0; i < exercises.length; i++) {
+        var obj = exercises[i];
+        this.exercises[i] = new PhysicalActivity(obj.frequency, obj.duration, obj.type);
+      }
+      this.date = new Date().getTime();
+    };
+    return Recomendation;
+  })
+  .factory('Message', function (MessageType) {
+    var Message = function (title, body, type) {
+      this.id = 0;
+      this.title = title;
+      this.body = body;
+      this.date = new Date().getTime();
+      if (!type instanceof MessageType.constructor) {
+        throw 'The type must be a MessageType';
+      }
+      this.type = type;
+    };
+    return Message;
+  })
   .factory('Biomedic', function () {
     function Biomedic(biomedicDate, value) {
       if (this.constructor === Biomedic) {

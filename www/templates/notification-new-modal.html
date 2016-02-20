@@ -1,0 +1,37 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title positive">Nova Mensagem</h1>
+    <a class="button icon-left ion-close button-clear button-positive" ng-click="closeModal()"></a>
+  </ion-header-bar>
+  <ion-content>
+    <form name="form" novalidate ng-submit="sendMessage(form)" ng-controller="MessageCtrl">
+      <div class="col">
+        <label class="item item-input">
+          <span class="positive input-label">Título da Mensagem</span>
+          <span style="color: #c8c8c8"></span>
+          <input required ng-model="message.title" name="title" type="text">
+        </label>
+      </div>
+      <div ng-messages="form.value.$error" ng-if="form.$invalid && form.$submitted" role="alert">
+        <div class="row assertive" ng-message="required">O titulo da mensagem é obrigatório.</div>
+      </div>
+      <div class="col">
+        <label class="item item-input">
+          <span class="positive input-label">Corpo da Mensagem</span>
+          <span style="color: #c8c8c8"></span>
+          <textarea required ng-model="message.body" name="body" rows="8" type="text"></textarea>
+        </label>
+      </div>
+      <div ng-messages="form.value.$error" ng-if="form.$invalid && form.$submitted" role="alert">
+        <div class="row assertive" ng-message="required">O corpo da mensagem é obrigatório.</div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label class="">
+            <button class="col button button-block button-positive" type="submit">Enviar Mensagem</button>
+          </label>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>
