@@ -2,36 +2,52 @@
   <ion-content id="pnlContent" class="main-bg">
     <div class="row responsive-lg">
       <div id="user-profile-pnl" class="col col-25">
-        <div class="left-border positive-border card">
-          <div class="item item-button-right">
-            <h2 class="positive">{{selectedUser.firstName}} {{selectedUser.lastName}}</h2>
-            <div class="buttons">
-              <button class="button-positive button button-outline ion-edit" ng-click="editUserPersonalData()"></button>
-              <button class="button-positive button button-outline ion-arrow-swap" ng-click="selectUser()"></button>
+        <div class="row responsive-lg">
+          <div class="col">
+            <div class="left-border positive-border card">
+              <div class="item item-button-right">
+                <h2 class="positive">{{selectedUser.firstName}} {{selectedUser.lastName}}</h2>
+                <div class="buttons">
+                  <button class="button-positive button button-outline ion-edit"
+                          ng-click="editUserPersonalData()"></button>
+                </div>
+              </div>
+              <div class="item">
+                <img id="profileImageImg" class="center avatar" width="200" height="200"
+                     ng-src="{{selectedUser.profileImage || '//:0' }}">
+              </div>
+              <div class="item item-divider">
+              </div>
+              <div class="item item-text-wrap">
+                <div class="row">
+                  <div class="col positive">Data de Nascimento</div>
+                  <div class="col text-right"> {{selectedUser.formattedBirthdate}}</div>
+                </div>
+                <div class="row">
+                  <div class="col positive">Altura</div>
+                  <div class="col text-right"> {{selectedUser.height}} cm</div>
+                </div>
+                <div class="row">
+                  <div class="col positive">Peso</div>
+                  <div class="col text-right"> {{selectedUser.weight}} Kg</div>
+                </div>
+                <div class="row">
+                  <div class="col positive">Morada</div>
+                  <div class="col text-right"> {{selectedUser.address}}</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="item">
-            <img id="profileImageImg" class="center avatar" width="200" height="200"
-                 ng-src="{{selectedUser.profileImage || '//:0' }}">
-          </div>
-          <div class="item item-divider">
-          </div>
-          <div class="item item-text-wrap">
-            <div class="row">
-              <div class="col positive">Data de Nascimento</div>
-              <div class="col text-right"> {{selectedUser.formattedBirthdate}}</div>
-            </div>
-            <div class="row">
-              <div class="col positive">Altura</div>
-              <div class="col text-right"> {{selectedUser.height}} cm</div>
-            </div>
-            <div class="row">
-              <div class="col positive">Peso</div>
-              <div class="col text-right"> {{selectedUser.weight}} Kg</div>
-            </div>
-            <div class="row">
-              <div class="col positive">Morada</div>
-              <div class="col text-right"> {{selectedUser.address}}</div>
+        </div>
+        <div class="row responsive-lg">
+          <div class="col">
+            <div class="left-border positive-border card positive">
+              <div class="item item-text-wrap positive">
+                Última Recomendação
+              </div>
+              <div class="item item-text-wrap" ng-repeat="exercise in currentRecomendation.exercises">
+                {{exercise.duration}} min a {{exercise.type.value}} {{exercise.frequency}} vezes por Semana
+              </div>
             </div>
           </div>
         </div>
@@ -39,7 +55,7 @@
       <div id="user-data-pnl" class="col col-75">
         <div class="row responsive-lg">
           <div class="col">
-            <div class="card">
+            <div class="left-border positive-border card">
               <div class="item item-body">Hemoglobina
                 <canvas ng-if="!isEmpty(chartHemoglobin.data)" id="lineHemoglobin" class="chart chart-line"
                         chart-data="chartHemoglobin.data"
@@ -53,7 +69,7 @@
             </div>
           </div>
           <div class="col">
-            <div class="card">
+            <div class="left-border positive-border card">
               <div class="item item-body">Tensão Arterial (Máxima / Mínima)
                 <canvas id="lineBloodPressure" class="chart chart-line" chart-data="chartBloodPressure.data"
                         chart-labels="chartBloodPressure.labels" chart-legend="false"
@@ -65,7 +81,7 @@
         </div>
         <div class="row responsive-lg">
           <div class="col">
-            <div class="card">
+            <div class="left-border positive-border card">
               <div class="item item-body">Colesterol
                 <canvas id="lineCholesterol" class="chart chart-line" chart-data="chartCholesterol.data"
                         chart-labels="chartCholesterol.labels" chart-legend="false  "
@@ -75,7 +91,7 @@
             </div>
           </div>
           <div class="col">
-            <div class="card">
+            <div class="left-border positive-border card">
               <div class="item item-body">Peso / IMC
                 <canvas id="lineWeight" class="chart chart-line" chart-data="chartWeight.data"
                         chart-labels="chartWeight.labels" chart-legend="false"

@@ -1,23 +1,26 @@
 <ul id="menu" class="mfb-component--tr mfb-zoomin" data-mfb-toggle="hover">
   <li class="mfb-component__wrap">
-    <a href="#" class="mfb-component__button--main"
-       style="background-color: #0c60ee;">
+    <a href="#" class="mfb-component__button--main">
       <i class="mfb-component__main-icon--resting ion-plus"></i>
       <i class="mfb-component__main-icon--active ion-close"></i>
     </a>
     <ul class="mfb-component__list">
       <li>
         <a ng-click="openNotificationModal()" data-mfb-label="Nova Mensagem"
-           style="background-color: #0c60ee;"
            class="mfb-component__button--child">
           <i class="mfb-component__child-icon ion-ios-compose"></i>
         </a>
       </li>
       <li>
-        <a ng-click="openPhysicalActivityModal()" data-mfb-label="Nova Recomendação de Atividade Física"
-           style="background-color: #0c60ee;"
+        <a ng-click="openPhysicalActivityModal()" data-mfb-label="Ajustar Recomendação de Atividade Física"
            class="mfb-component__button--child">
-          <i class="mfb-component__child-icon ion-ios-compose"></i>
+          <i class="mfb-component__child-icon ion-ios-settings-strong"></i>
+        </a>
+      </li>
+      <li>
+        <a ng-click="selectUser()" data-mfb-label="Trocar Utilizador"
+           class="mfb-component__button--child">
+          <i class="mfb-component__child-icon ion-arrow-swap"></i>
         </a>
       </li>
     </ul>

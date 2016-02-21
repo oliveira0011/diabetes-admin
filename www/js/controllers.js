@@ -273,7 +273,7 @@ angular.module('app.controllers', [])
       });
     }
   })
-  .controller('MainCtrl', function ($scope, $timeout, $window, $state, ModalService, BiomedicService, BiomedicType, UsersService, $ionicPopover) {
+  .controller('MainCtrl', function ($scope, $timeout, $window, $state, ModalService, BiomedicService, BiomedicType, UsersService, RecomendationService) {
     $scope.selectedUser;
     $scope.hemoglobinRecords = [];
     $scope.bloodPressureRecords = [];
@@ -532,6 +532,13 @@ angular.module('app.controllers', [])
           }
         });
 
+
+        RecomendationService.getCurrentRecomendation($scope.selectedUser.id, function (recomendation) {
+          if (recomendation) {
+            $scope.currentRecomendation = recomendation.toJson();
+          }
+        });
+
       })
     };
     if (!$scope.selectedUser) {
@@ -704,8 +711,6 @@ angular.module('app.controllers', [])
   })
   .controller('MessageCtrl', function ($scope, $ionicLoading, ModalService, MessageService, Message, MessageType) {
     $scope.message = {};
-
-
     $scope.closeModal = function () {
       ModalService.close();
     };
@@ -722,24 +727,28 @@ angular.module('app.controllers', [])
     }
   })
   .controller('PhysicalActivityCtrl', function ($scope, $ionicLoading, ModalService, RecomendationService, Recomendation, PhysicalActivityType) {
-    $scope.recomendation = {
-      exercises: [{
-        duration: 30,
-        frequency: 2,
-        type: PhysicalActivityType.RUN
-      }, {
-        duration: 15,
-        frequency: 3,
-        type: PhysicalActivityType.WALK
-      }]
-    };
+
+
+    RecomendationService.getCurrentRecomendation($scope.selectedUser.id, function (recomendation) {
+      console.log(recomendation)
+      if (recomendation && recomendation !== null) {
+        $scope.recomendation = recomendation.toJson();
+      } else {
+        $scope.recomendation = {
+          exercises: [{
+            duration: 15,
+            frequency: 2,
+            type: PhysicalActivityType.WALK
+          }]
+        };
+      }
+    });
     $scope.recomendationsTypes = Object.keys(PhysicalActivityType).map(function (key) {
       return PhysicalActivityType[key]
     });
 
     $scope.getAvailableRecomendationsTypes = function (index, type) {
       var optionsToReturn = $scope.recomendationsTypes.slice(0);
-      console.log('------');
       for (var i = 0; i < $scope.recomendation.exercises.length; i++) {
         var obj = $scope.recomendation.exercises[i];
         if (obj.type !== type) {
@@ -785,8 +794,8 @@ angular.module('app.controllers', [])
         $ionicLoading.hide();
         ModalService.close();
       };
-      RecomendationService.addMessage($scope.selectedUser.id, new Recomendation($scope.recomendation.exercises), handler());
-    }
+      RecomendationService.addRecomendation($scope.selectedUser.id, new Recomendation($scope.recomendation.exercises), handler());
+    };
   })
   .controller('PlaylistCtrl', function ($scope, $stateParams) {
   });

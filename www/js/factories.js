@@ -37,7 +37,7 @@ angular.module('app.factories', [])
     var Recomendation = function (exercises) {
       this.id = 0;
       this.exercises = [];
-      if (!type instanceof Array.constructor) {
+      if (!exercises instanceof Array.constructor) {
         throw 'The exercises must be an array';
       }
       for (var i = 0; i < exercises.length; i++) {
@@ -45,6 +45,20 @@ angular.module('app.factories', [])
         this.exercises[i] = new PhysicalActivity(obj.frequency, obj.duration, obj.type);
       }
       this.date = new Date().getTime();
+    };
+    Recomendation.prototype.toJson = function () {
+      var exercises = [];
+      for (var i = 0; i < this.exercises.length; i++) {
+        var obj = this.exercises[i];
+        exercises[i] = {
+          frequency: obj.frequency,
+          duration: obj.duration,
+          type: obj.type};
+      }
+      return {
+        exercises: exercises,
+        date: this.date
+      }
     };
     return Recomendation;
   })

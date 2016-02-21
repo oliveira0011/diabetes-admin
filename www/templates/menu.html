@@ -17,7 +17,7 @@
             <img id="profileImageImg1" width="50" height="50" class="center avatar" src="/img/personal.png">
           </div>
           <div class="col">
-            <button class="button button-clear ion ion-log-out"></button>
+            <button class="button button-clear ion ion-log-out" ng-click="logout()"></button>
           </div>
         </div>
       </ion-nav-buttons>
@@ -31,12 +31,6 @@
         <ion-item>
           <img id="profileImageImg2" width="100" height="100" class="center avatar" src="/img/personal.png">
           <h2 class="center stable">Ivo Oliveira</h2>
-        </ion-item>
-        <ion-item menu-close href="#/app/users">
-          Utiizadores
-        </ion-item>
-        <ion-item menu-close href="#/app/biometricos">
-          Registos
         </ion-item>
         <ion-item menu-close class="ion ion-log-out" ng-click="logout()"></ion-item>
       </ion-list>

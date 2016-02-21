@@ -449,6 +449,38 @@ angular.module('app.services', [])
     };
     return messagesService;
   })
-  .service('RecomendationService', function (FirebaseService, Recomendation, PhysicalActivity, PhysicalActivityType) {
-
+  .service('RecomendationService', function (FirebaseService, Recomendation, PhysicalActivity, PhysicalActivityType, MessageService, Message, MessageType) {
+    var recomendationService = {};
+    recomendationService.addRecomendation = function (userId, recomendation, handler) {
+      if (!recomendation instanceof Recomendation) {
+        throw 'The data passed to persist must be a Message class.';
+      }
+      if (!FirebaseService.isUserLogged()) {
+        console.log('invalidUser');
+        $rootScope.$broadcast('logoutUser');
+      }
+      var ref = FirebaseService.getDBConnection().child('recomendations').child(userId).push();
+      ref.set(recomendation.toJson());
+      MessageService.addMessage(userId, new Message('Recomendação atualizada', 'A atividade física recomendada pelo seu médico foi atualizada', MessageType.ACTIVITY_REEVALUATION));
+    };
+    recomendationService.getCurrentRecomendation = function (userId, handler) {
+      if (!FirebaseService.isUserLogged()) {
+        console.log('invalidUser');
+        $rootScope.$broadcast('logoutUser');
+      }
+      FirebaseService.getDBConnection().child('recomendations').child(userId).orderByChild("date").limitToLast(1).on('value', function (snap) {
+        var value = snap.val();
+        for (var first in value) {
+          if (value.hasOwnProperty(first)) {
+            var rec = new Recomendation(value[first].exercises);
+            rec.id = first;
+            rec.date = value[first].date;
+            handler(rec);
+            return;
+          }
+        }
+        handler();
+      });
+    };
+    return recomendationService;
   });
