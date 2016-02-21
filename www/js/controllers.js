@@ -437,20 +437,23 @@ angular.module('app.controllers', [])
           break;
         case BiomedicType.CHOLESTEROL:
           $scope.chartCholesterol = {
-            labels: labels,
-            data: [records],
+            labels: labels.splice(0, 3),
+            data: [records.splice(0, 3)],
             series: ['Colesterol'],
             colours: [colors]
           };
           break;
         case BiomedicType.WEIGHT:
           var imc = [];
+          var merged = [];
           for (var i = 0; i < records.length; i++) {//IMC calculation
             imc[i] = (records[i] / (1.71 * 1.71)).toFixed(2);
+            merged[i] = {weight: records[i], imc: imc[i]};
           }
           $scope.chartWeight = {
             labels: labels,
-            data: [records, imc],
+            data: merged,
+            //data: [records, imc],
             series: ['Peso', 'IMC'],
             colours: [colors]
           };

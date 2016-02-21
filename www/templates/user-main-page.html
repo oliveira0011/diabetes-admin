@@ -42,8 +42,12 @@
         <div class="row responsive-lg">
           <div class="col">
             <div class="left-border positive-border card positive">
-              <div class="item item-text-wrap positive">
-                Última Recomendação
+              <div class="item item-button-right">
+                <h2 class="positive">Última Recomendação</h2>
+                <div class="buttons">
+                  <button class="button-positive button button-outline ion-ios-settings-strong"
+                          ng-click="openPhysicalActivityModal()"></button>
+                </div>
               </div>
               <div class="item item-text-wrap" ng-repeat="exercise in currentRecomendation.exercises">
                 {{exercise.duration}} min a {{exercise.type.value}} {{exercise.frequency}} vezes por Semana
@@ -83,7 +87,7 @@
           <div class="col">
             <div class="left-border positive-border card">
               <div class="item item-body">Colesterol
-                <canvas id="lineCholesterol" class="chart chart-line" chart-data="chartCholesterol.data"
+                <canvas id="lineCholesterol" class="chart chart-bar" chart-data="chartCholesterol.data"
                         chart-labels="chartCholesterol.labels" chart-legend="false  "
                         chart-series="chartCholesterol.series" chart-colours="chartCholesterol.colours">
                 </canvas>
@@ -92,11 +96,29 @@
           </div>
           <div class="col">
             <div class="left-border positive-border card">
-              <div class="item item-body">Peso / IMC
-                <canvas id="lineWeight" class="chart chart-line" chart-data="chartWeight.data"
-                        chart-labels="chartWeight.labels" chart-legend="false"
-                        chart-series="chartWeight.series" chart-colours="chartWeight.colours">
-                </canvas>
+              <div class="item item-body">
+                <!--<canvas id="lineWeight" class="chart chart-line" chart-data="chartWeight.data"-->
+                <!--chart-labels="chartWeight.labels" chart-legend="false"-->
+                <!--chart-series="chartWeight.series" chart-colours="chartWeight.colours">-->
+                <!--</canvas>-->
+                <div class="container">
+                  <div class="page-header">
+                    <h1 id="timeline">Peso / IMC</h1>
+                  </div>
+                  <ul class="timeline">
+                    <li class="{{$index % 2 === 0 ? '' : 'timeline-inverted'}}" ng-repeat="dt in chartWeight.data">
+                      <div class="timeline-panel">
+                        <div class="timeline-heading">
+                          <h1 class="timeline-title"><span class="positive"> {{chartWeight.labels[$index]}}</span></h1>
+                        </div>
+                        <div class="timeline-body">
+                          <p><span class="positive">Peso:</span> {{dt.weight}} Kg</p>
+                          <p><span class="positive">IMC:</span> {{dt.imc}}</p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

@@ -267,9 +267,13 @@ angular.module('app.services', [])
         }, handler);
     };
 
-    BiomedicService.getRecords = function (type, userId, handler) {
+    BiomedicService.getRecords = function (type, userId, handler, maxResults) {
       var dbConnection = FirebaseService.getDBConnection();
-      dbConnection.child(type).child(userId).on('value', function (data) {
+      var ref = dbConnection.child(type).child(userId).orderByChild("biomedicDate");
+      if(maxResults){
+        ref = ref.limitToLast(maxResults);
+      }
+      ref.on('value', function (data) {
         var results = data.val();
         for (var result in results) {
           if (results.hasOwnProperty(result)) {
@@ -328,10 +332,10 @@ angular.module('app.services', [])
       BiomedicService.getRecords(BiomedicType.MAX_BLOOD_PRESSURE, userId, handler);
     };
     BiomedicService.getCholesterolRecords = function (userId, handler) {
-      BiomedicService.getRecords(BiomedicType.CHOLESTEROL, userId, handler);
+      BiomedicService.getRecords(BiomedicType.CHOLESTEROL, userId, handler, 3);
     };
     BiomedicService.getWeightRecords = function (userId, handler) {
-      BiomedicService.getRecords(BiomedicType.WEIGHT, userId, handler);
+      BiomedicService.getRecords(BiomedicType.WEIGHT, userId, handler, 3);
     };
     return BiomedicService;
   })
