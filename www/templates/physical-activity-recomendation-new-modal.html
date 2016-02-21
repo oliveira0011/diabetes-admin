@@ -1,34 +1,50 @@
 <ion-modal-view>
   <ion-header-bar>
-    <h1 class="title positive">Nova Mensagem</h1>
+    <h1 class="title positive">Recomendação de Atividade Física</h1>
     <a class="button icon-left ion-close button-clear button-positive" ng-click="closeModal()"></a>
   </ion-header-bar>
   <ion-content>
     <form name="form" novalidate ng-submit="sendMessage(form)" ng-controller="PhysicalActivityCtrl">
-      <div class="col">
-        <label class="item item-input">
-          <span class="positive input-label">Título da Mensagem</span>
-          <span style="color: #c8c8c8"></span>
-          <input required ng-model="message.title" name="title" type="text">
-        </label>
+      <div class="row responsive-md" ng-repeat="rec in recomendation.exercises">
+        <div class="col col-30">
+          <label class="item item-input-inset">
+            <input placeholder="Duração" required ng-model="rec.duration" name="title" type="number">
+            <span class="positive">Minutos</span>
+          </label>
+        </div>
+        <div class="col col-30">
+          <label class="item  item-input-inset item-select">
+            <div class="input-label positive">
+              A
+            </div>
+            <select name="type" ng-options="type.value for type in getAvailableRecomendationsTypes($index, rec.type) track by type.key"
+                    ng-model="rec.type"></select>
+          </label>
+        </div>
+        <div class="col col-30">
+          <label class="item item-input-inset">
+            <input placeholder="Frequência" required ng-model="rec.frequency" name="frequency" type="number" max="7">
+            <span class="positive">vezes por Semana</span>
+          </label>
+          <div ng-messages="form.frequency.$error" ng-if="form.$invalid && form.$submitted" role="alert">
+            <div class="row assertive" ng-message="number">A frequência do exercício apenas pode possuir valores numéricos.</div>
+            <div class="row assertive" ng-message="min">A frequência do exercício não pode ser inferior a 1 dias por semana.</div>
+            <div class="row assertive" ng-message="max">A frequência do exercício não pode ser superior a 7 dias por semana.</div>
+            <div class="row assertive" ng-message="required">A frequência do exercício é obrigatória.</div>
+          </div>
+        </div>
+        <div class="col col-10">
+          <button ng-disabled="recomendation.exercises.length === recomendationsTypes.length" class="col button button-clear button-icon ion-plus-circled" ng-click="addExercise($index)" type="button"></button>
+        </div>
+        <div class="col col-10">
+          <button ng-show="$index !== 0" class="col button button-clear button-icon ion-minus-circled" ng-click="removeExercise($index)" type="button"></button>
+        </div>
       </div>
-      <div ng-messages="form.value.$error" ng-if="form.$invalid && form.$submitted" role="alert">
-        <div class="row assertive" ng-message="required">O titulo da mensagem é obrigatório.</div>
-      </div>
-      <div class="col">
-        <label class="item item-input">
-          <span class="positive input-label">Corpo da Mensagem</span>
-          <span style="color: #c8c8c8"></span>
-          <textarea required ng-model="message.body" name="body" rows="8" type="text"></textarea>
-        </label>
-      </div>
-      <div ng-messages="form.value.$error" ng-if="form.$invalid && form.$submitted" role="alert">
-        <div class="row assertive" ng-message="required">O corpo da mensagem é obrigatório.</div>
-      </div>
+
       <div class="row">
         <div class="col">
           <label class="">
-            <button class="col button button-block button-positive" type="submit">Enviar Mensagem</button>
+            <button class="col button button-block button-positive" type="submit">Gravar Recomendação</button>
           </label>
         </div>
       </div>

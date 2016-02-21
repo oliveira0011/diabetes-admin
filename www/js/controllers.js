@@ -723,7 +723,52 @@ angular.module('app.controllers', [])
   })
   .controller('PhysicalActivityCtrl', function ($scope, $ionicLoading, ModalService, RecomendationService, Recomendation, PhysicalActivityType) {
     $scope.recomendation = {
-      exercises:[]
+      exercises: [{
+        duration: 30,
+        frequency: 2,
+        type: PhysicalActivityType.RUN
+      }, {
+        duration: 15,
+        frequency: 3,
+        type: PhysicalActivityType.WALK
+      }]
+    };
+    $scope.recomendationsTypes = Object.keys(PhysicalActivityType).map(function (key) {
+      return PhysicalActivityType[key]
+    });
+
+    $scope.getAvailableRecomendationsTypes = function (index, type) {
+      var optionsToReturn = $scope.recomendationsTypes.slice(0);
+      console.log('------');
+      for (var i = 0; i < $scope.recomendation.exercises.length; i++) {
+        var obj = $scope.recomendation.exercises[i];
+        if (obj.type !== type) {
+          var idx = -1;
+          for (var j = 0; j < optionsToReturn.length; j++) {
+            var obj1 = optionsToReturn[j];
+            if (obj && obj.type && obj1.key === obj.type.key) {
+              idx = j;
+              break;
+            }
+          }
+          if (idx !== -1) {
+            optionsToReturn.splice(idx, 1);
+          }
+        }
+      }
+      if (!$scope.recomendation.exercises[index].type) {
+        $scope.recomendation.exercises[index].type = optionsToReturn[0];
+      }
+      return optionsToReturn;
+    };
+    $scope.addExercise = function (index) {
+      $scope.recomendation.exercises.splice(index + 1, 0, {
+        duration: 15,
+        frequency: 2
+      });
+    };
+    $scope.removeExercise = function (index) {
+      $scope.recomendation.exercises.splice(index, 1);
     };
 
 
@@ -731,10 +776,11 @@ angular.module('app.controllers', [])
       ModalService.close();
     };
     $scope.sendMessage = function (form) {
+      console.log(form);
       if (form.$invalid) {
         return;
       }
-      $ionicLoading.show({template: "A gravar Recomendação ..."});
+      $ionicLoading.show({template: "A Gravar Recomendação ..."});
       var handler = function () {
         $ionicLoading.hide();
         ModalService.close();

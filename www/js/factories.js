@@ -17,8 +17,8 @@ angular.module('app.factories', [])
   })
   .factory('PhysicalActivityType', function () {
     return {
-      WALK: 'walk',
-      RUN: 'run'
+      WALK: {key: "WALK", value: "Andar"},
+      RUN: {key: "RUN", value: "Correr"}
     }
   })
   .factory('PhysicalActivity', function (PhysicalActivityType) {
