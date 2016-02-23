@@ -45,6 +45,8 @@
               <div class="item item-button-right">
                 <h2 class="positive">Última Recomendação</h2>
                 <div class="buttons">
+                  <button class="button-positive button button-outline ion-ios-eye-outline"
+                          ng-click="openViewPhysicalActivityModal()"></button>
                   <button class="button-positive button button-outline ion-ios-settings-strong"
                           ng-click="openPhysicalActivityModal()"></button>
                 </div>
@@ -60,8 +62,8 @@
         <div class="row responsive-lg">
           <div class="col">
             <div class="left-border positive-border card">
-              <div class="item item-body">Hemoglobina
-                <canvas ng-if="!isEmpty(chartHemoglobin.data)" id="lineHemoglobin" class="chart chart-line"
+              <div class="item item-body">Hemoglobina <span class="positive">[%]</span>
+                <canvas ng-if="!isEmpty(chartHemoglobin.data)" id="lineHemoglobin" class="chart chart-line" chart-options="chartHemoglobin.options"
                         chart-data="chartHemoglobin.data"
                         chart-labels="chartHemoglobin.labels" chart-legend="false"
                         chart-series="chartHemoglobin.series" chart-colours="chartHemoglobin.colours">
@@ -74,8 +76,8 @@
           </div>
           <div class="col">
             <div class="left-border positive-border card">
-              <div class="item item-body">Tensão Arterial (Máxima / Mínima)
-                <canvas id="lineBloodPressure" class="chart chart-line" chart-data="chartBloodPressure.data"
+              <div class="item item-body">Tensão Arterial (Sistólica / Diastólica) <span class="positive">[mmHg]</span>
+                <canvas id="lineBloodPressure" class="chart chart-line" chart-data="chartBloodPressure.data" chart-options="chartHemoglobin.options"
                         chart-labels="chartBloodPressure.labels" chart-legend="false"
                         chart-series="chartBloodPressure.series" chart-colours="chartBloodPressure.colours">
                 </canvas>
@@ -86,8 +88,8 @@
         <div class="row responsive-lg">
           <div class="col">
             <div class="left-border positive-border card">
-              <div class="item item-body">Colesterol
-                <canvas id="lineCholesterol" class="chart chart-bar" chart-data="chartCholesterol.data"
+              <div class="item item-body">Colesterol <span class="positive">[mg/dL]</span>
+                <canvas id="lineCholesterol" class="chart chart-bar" chart-data="chartCholesterol.data" chart-options="chartHemoglobin.options"
                         chart-labels="chartCholesterol.labels" chart-legend="false  "
                         chart-series="chartCholesterol.series" chart-colours="chartCholesterol.colours">
                 </canvas>

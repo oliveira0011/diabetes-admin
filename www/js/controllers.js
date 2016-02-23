@@ -18,7 +18,6 @@ angular.module('app.controllers', [])
    */
   .controller('UsersCtrl', function ($scope, $timeout, $window, $state, UserFormFactory, FirebaseService, UsersService, $rootScope) {
     var dbConnection = FirebaseService.getDBConnection();
-    console.log(FirebaseService.getCurrentUserUid());
     dbConnection.child("doctors").child(FirebaseService.getCurrentUserUid()).child("users").once('value', function (snap) {
 
       $scope.users = {};
@@ -57,28 +56,24 @@ angular.module('app.controllers', [])
             templateUrl: "templates/user.personal.html",
             callback: function () {
               $scope.currentOption = this;
-              console.log('ok');
             }
           }, {
             description: 'Atividade Física',
             templateUrl: "templates/user.biometric.html",
             callback: function () {
               $scope.currentOption = this;
-              console.log($scope.currentOption);
             }
           }, {
             description: 'Exercícios Recomendados',
             templateUrl: "templates/user.biometric.html",
             callback: function () {
               $scope.currentOption = this;
-              console.log($scope.currentOption);
             }
           }, {
             description: 'Dados Biométricos',
             templateUrl: "templates/user.biometric.html",
             callback: function () {
               $scope.currentOption = this;
-              console.log($scope.currentOption);
             }
           }
         ];
@@ -89,7 +84,6 @@ angular.module('app.controllers', [])
           templateUrl: "templates/user.personal.html",
           callback: function () {
             $scope.currentOption = this;
-            console.log('ok');
           }
         };
 
@@ -273,7 +267,7 @@ angular.module('app.controllers', [])
       });
     }
   })
-  .controller('MainCtrl', function ($scope, $timeout, $window, $state, ModalService, BiomedicService, BiomedicType, UsersService, RecomendationService) {
+  .controller('MainCtrl', function ($scope, $timeout, $window, $state, ModalService, BiomedicService, BiomedicType, UsersService, RecomendationService, FirebaseService) {
     $scope.selectedUser;
     $scope.hemoglobinRecords = [];
     $scope.bloodPressureRecords = [];
@@ -421,6 +415,9 @@ angular.module('app.controllers', [])
       switch (type) {
         case BiomedicType.HEMOGLOBIN:
           $scope.chartHemoglobin = {
+            options: {
+              bezierCurve: false
+            },
             labels: labels,
             data: [records],
             series: ['Hemoglobina'],
@@ -429,6 +426,9 @@ angular.module('app.controllers', [])
           break;
         case BiomedicType.BLOOD_PRESSURE:
           $scope.chartBloodPressure = {
+            options: {
+              bezierCurve: false
+            },
             labels: labels,
             data: records,
             series: ['Tensão Arterial Máxima', 'Tensão Arterial Mínima'],
@@ -437,6 +437,9 @@ angular.module('app.controllers', [])
           break;
         case BiomedicType.CHOLESTEROL:
           $scope.chartCholesterol = {
+            options: {
+              bezierCurve: false
+            },
             labels: labels.splice(0, 3),
             data: [records.splice(0, 3)],
             series: ['Colesterol'],
@@ -451,6 +454,9 @@ angular.module('app.controllers', [])
             merged[i] = {weight: records[i], imc: imc[i]};
           }
           $scope.chartWeight = {
+            options: {
+              bezierCurve: false
+            },
             labels: labels,
             data: merged,
             //data: [records, imc],
@@ -477,12 +483,19 @@ angular.module('app.controllers', [])
           modal.show();
         });
     };
+    $scope.openViewPhysicalActivityModal = function () {
+      ModalService
+        .init('templates/physical-activity-recomendation-view-modal.html', $scope)
+        .then(function (modal) {
+          modal.show();
+        });
+    };
 
     $scope.getUserFormattedDate = function (timestamp) {
       var currentYear = new Date().getFullYear();
       var currentMonth = new Date().getMonth() + 1;
       var date = new Date(timestamp);
-      var day = date.getDay() < 10 ? '0' + date.getDay() : date.getDay();
+      var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
       var month = date.getMonth() + 1;
       month = month < 10 ? '0' + month : month;
       var year = date.getFullYear();
@@ -733,7 +746,6 @@ angular.module('app.controllers', [])
 
 
     RecomendationService.getCurrentRecomendation($scope.selectedUser.id, function (recomendation) {
-      console.log(recomendation)
       if (recomendation && recomendation !== null) {
         $scope.recomendation = recomendation.toJson();
       } else {
@@ -788,7 +800,6 @@ angular.module('app.controllers', [])
       ModalService.close();
     };
     $scope.sendMessage = function (form) {
-      console.log(form);
       if (form.$invalid) {
         return;
       }
@@ -799,6 +810,58 @@ angular.module('app.controllers', [])
       };
       RecomendationService.addRecomendation($scope.selectedUser.id, new Recomendation($scope.recomendation.exercises), handler());
     };
+  })
+  .controller('PhysicalActivityViewCtrl', function ($scope, $ionicLoading, ModalService, RecomendationService, Recomendation, PhysicalActivityType) {
+
+    $scope.currentIndex = 0;
+
+    $scope.getFormattedDate = function (timestamp) {
+      var date = new Date(timestamp);
+      var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+      var month = date.getMonth() + 1;
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var seconds = date.getSeconds();
+      month = month < 10 ? '0' + month : month;
+      hours = hours < 10 ? '0' + hours : hours;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      var year = date.getFullYear();
+      return day + "/" + month + '/' + year + " " + hours + ":" + minutes + ":" + seconds;
+    };
+    $scope.recomendations = [];
+    $scope.recomendation = {};
+
+    RecomendationService.getRecomendations($scope.selectedUser.id, function (recomendations) {
+      if (recomendations && recomendations !== null) {
+        for (var i = 0; i < recomendations.length; i++) {
+          var obj = recomendations[i];
+          $scope.recomendations.push(obj.toJson());
+        }
+        $scope.currentIndex = 0;
+        $scope.recomendation = $scope.recomendations[$scope.currentIndex];
+      }
+    });
+
+    $scope.nextRecomendation = function () {
+
+      if ($scope.currentIndex == $scope.recomendations.length - 1) {
+        return;
+      }
+      $scope.recomendation = $scope.recomendations[$scope.currentIndex++];
+
+    };
+    $scope.previousRecomendation = function () {
+
+      if ($scope.currentIndex == 0) {
+        return;
+      }
+      $scope.recomendation = $scope.recomendations[$scope.currentIndex--];
+    };
+    $scope.closeModal = function () {
+      ModalService.close();
+    };
+
   })
   .controller('PlaylistCtrl', function ($scope, $stateParams) {
   });

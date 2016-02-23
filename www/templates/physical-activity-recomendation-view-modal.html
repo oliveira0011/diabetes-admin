@@ -1,0 +1,51 @@
+<ion-modal-view ng-controller="PhysicalActivityViewCtrl">
+  <ion-header-bar>
+    <a class="button icon-left ion-chevron-left button-clear button-positive"
+       ng-disabled="currentIndex === 0" ng-click="previousRecomendation()"></a>
+    <h1 class="title positive">Histórico de Recomendações de Atividade Física</h1>
+    <a class="button icon-right ion-chevron-right button-clear button-positive"
+       ng-disabled="recomendations.length - 1 <= currentIndex" ng-click="nextRecomendation()"></a>
+    <a class="button icon-left ion-close button-clear button-positive" ng-click="closeModal()"></a>
+  </ion-header-bar>
+  <ion-content>
+    <div ng-if="recomendations.length==0" class="text-center">
+      <h1 class="positive">Nenhuma recomendação efetuada até à data</h1>
+    </div>
+
+
+    <div ng-if="recomendations.length!=0">
+      <div class="row responsive-md positive">
+        {{getFormattedDate(recomendation.date)}}
+      </div>
+      <div class="row responsive-md" ng-repeat="rec in recomendation.exercises">
+        <div class="col col-30">
+          <label class="item item-input-inset">
+            {{rec.duration}}&nbsp;
+            <span class="positive">Minutos</span>
+          </label>
+        </div>
+        <div class="col col-30">
+          <label class="item item-input-inset">
+            <div class="positive">
+              A&nbsp;
+            </div>
+            {{rec.type.value}}
+          </label>
+        </div>
+        <div class="col col-30">
+          <label class="item item-input-inset">
+            {{rec.frequency}}&nbsp;
+            <span class="positive">vezes por Semana</span>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label class="">
+            <button class="col button button-block button-positive" type="submit">Gravar Recomendação</button>
+          </label>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

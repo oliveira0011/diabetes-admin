@@ -193,12 +193,10 @@ angular.module('app.services', [])
         /**
          * SAVE THE NEW USER INFO
          */
-        console.log(retrievedUser);
         dbConnection.createUser({
           email: $scope.retrievedUser.email,
           password: $scope.retrievedUser.password
         }, function (error, userData) {
-          console.log("aqui");
           if (error) {
             var invalidMessages;
             switch (error.code) {
@@ -219,7 +217,6 @@ angular.module('app.services', [])
             delete  retrievedUser.uid;
             usersRef = usersRef.child(userId).set($scope.retrievedUser);
             //userId = usersRef.key();
-            console.log(userId);
             console.log("Successfully created user account with uid:", userData.uid);
             $scope.saveImageData(userId, image);
           }
@@ -270,7 +267,7 @@ angular.module('app.services', [])
     BiomedicService.getRecords = function (type, userId, handler, maxResults) {
       var dbConnection = FirebaseService.getDBConnection();
       var ref = dbConnection.child(type).child(userId).orderByChild("biomedicDate");
-      if(maxResults){
+      if (maxResults) {
         ref = ref.limitToLast(maxResults);
       }
       ref.on('value', function (data) {
@@ -484,6 +481,25 @@ angular.module('app.services', [])
           }
         }
         handler();
+      });
+    };
+    recomendationService.getRecomendations = function (userId, handler) {
+      if (!FirebaseService.isUserLogged()) {
+        console.log('invalidUser');
+        $rootScope.$broadcast('logoutUser');
+      }
+      FirebaseService.getDBConnection().child('recomendations').child(userId).orderByChild("date").on('value', function (snap) {
+        var value = snap.val();
+        var arrayToReturn = [];
+        for (var first in value) {
+          if (value.hasOwnProperty(first)) {
+            var rec = new Recomendation(value[first].exercises);
+            rec.id = first;
+            rec.date = value[first].date;
+            arrayToReturn.push(rec);
+          }
+        }
+        handler(arrayToReturn);
       });
     };
     return recomendationService;
