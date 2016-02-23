@@ -501,7 +501,20 @@ angular.module('app.controllers', [])
       var year = date.getFullYear();
       return day + "/" + month + '/' + year + ' (' + (currentYear - year - (currentMonth < month ? 1 : 0)) + ' anos)';
     };
-
+    $scope.getFormattedDate = function (timestamp) {
+      var date = new Date(timestamp);
+      var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+      var month = date.getMonth() + 1;
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var seconds = date.getSeconds();
+      month = month < 10 ? '0' + month : month;
+      hours = hours < 10 ? '0' + hours : hours;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      var year = date.getFullYear();
+      return day + "/" + month + '/' + year + " " + hours + ":" + minutes + ":" + seconds;
+    };
     var defaultChart = {
       labels: [''],
       data: [],
