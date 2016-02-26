@@ -41,7 +41,7 @@
         </div>
         <div class="row responsive-lg">
           <div class="col">
-            <div class="left-border positive-border card positive">
+            <div style="margin-top: -10px;" class="left-border positive-border card positive">
               <div class="item item-button-right">
                 <h2 class="positive">Última Recomendação</h2>
                 <h3 class="">{{getFormattedDate(currentRecomendation.date)}}</h3>
@@ -63,43 +63,26 @@
         <div class="row responsive-lg">
           <div class="col">
             <div class="left-border positive-border card">
-              <div class="item item-body">Hemoglobina <span class="positive">[%]</span>
-                <canvas ng-if="!isEmpty(chartHemoglobin.data)" id="lineHemoglobin" class="chart chart-line"
-                        chart-options="chartHemoglobin.options"
-                        chart-data="chartHemoglobin.data"
-                        chart-labels="chartHemoglobin.labels" chart-legend="false"
-                        chart-series="chartHemoglobin.series" chart-colours="chartHemoglobin.colours">
-                </canvas>
-              </div>
-              <div class="item item-body" ng-if="isEmpty(chartHemoglobin.data)">
-                xpto
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="left-border positive-border card">
-              <div class="item item-body">Tensão Arterial (Sistólica / Diastólica) <span class="positive">[mmHg]</span>
-                <canvas id="lineBloodPressure" class="chart chart-line" chart-data="chartBloodPressure.data"
-                        chart-options="chartHemoglobin.options"
-                        chart-labels="chartBloodPressure.labels" chart-legend="false"
-                        chart-series="chartBloodPressure.series" chart-colours="chartBloodPressure.colours">
+              <div class="item item-body">Atividade Física<span class="positive">[%]</span>
+                <div class="text-right">
+                  <div class="positive">
+                    {{speeds[currentWeek].date}}
+                  </div>
+                  <button class="button button-icon ion-chevron-left positive" ng-disabled="currentWeek < 1"
+                          ng-click="previousWeek()"></button>
+                  <button class="button button-icon ion-chevron-right positive"
+                          ng-disabled="currentWeek > speeds.length - 2" ng-click="nextWeek()"></button>
+                </div>
+                <canvas ng-if="!isEmpty(chartSpeeds.data)" id="lineSpeeds" class="chart chart-bar"
+                        chart-options="chartSpeeds.options"
+                        chart-data="chartSpeeds.data"
+                        chart-labels="chartSpeeds.labels" chart-legend="false"
+                        chart-series="chartSpeeds.series" chart-colours="chartSpeeds.colours">
                 </canvas>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row responsive-lg">
-          <div class="col">
-            <div class="left-border positive-border card">
-              <div class="item item-body">Colesterol <span class="positive">[mg/dL]</span>
-                <canvas id="lineCholesterol" class="chart chart-bar" chart-data="chartCholesterol.data"
-                        chart-options="chartHemoglobin.options"
-                        chart-labels="chartCholesterol.labels" chart-legend="false  "
-                        chart-series="chartCholesterol.series" chart-colours="chartCholesterol.colours">
-                </canvas>
-              </div>
-            </div>
-          </div>
+
           <div class="col">
             <div class="left-border positive-border card">
               <div class="item item-body">
@@ -109,7 +92,8 @@
                   </h2>
 
                   <div class="steps-timeline">
-                    <div class="{{$index === 0 ? 'steps-one' : $index === 1 ? 'steps-two' : 'steps-three'}}" ng-repeat="dt in chartWeight.data">
+                    <div class="{{$index === 0 ? 'steps-one' : $index === 1 ? 'steps-two' : 'steps-three'}}"
+                         ng-repeat="dt in chartWeight.data">
                       <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt=""/>
                       <h3 class="steps-name">
                         {{chartWeight.labels[$index]}}
@@ -126,6 +110,43 @@
                 <!--chart-labels="chartWeight.labels" chart-legend="false"-->
                 <!--chart-series="chartWeight.series" chart-colours="chartWeight.colours">-->
                 <!--</canvas>-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row responsive-lg">
+
+          <div class="col">
+            <div class="left-border positive-border card">
+              <div class="item item-body">HbA1c <span class="positive">[%]</span>
+                <canvas ng-if="!isEmpty(chartHemoglobin.data)" id="lineHemoglobin" class="chart chart-line"
+                        chart-options="chartHemoglobin.options"
+                        chart-data="chartHemoglobin.data"
+                        chart-labels="chartHemoglobin.labels" chart-legend="false"
+                        chart-series="chartHemoglobin.series" chart-colours="chartHemoglobin.colours">
+                </canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="left-border positive-border card">
+              <div class="item item-body">Colesterol LDL<span class="positive">[mg/dL]</span>
+                <canvas id="lineCholesterol" class="chart chart-bar" chart-data="chartCholesterol.data"
+                        chart-options="chartCholesterol.options"
+                        chart-labels="chartCholesterol.labels" chart-legend="false  "
+                        chart-series="chartCholesterol.series" chart-colours="chartCholesterol.colours">
+                </canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="left-border positive-border card">
+              <div class="item item-body">Tensão Arterial (Sistólica / Diastólica) <span class="positive">[mmHg]</span>
+                <canvas id="lineBloodPressure" class="chart chart-line" chart-data="chartBloodPressure.data"
+                        chart-options="chartBloodPressure.options"
+                        chart-labels="chartBloodPressure.labels" chart-legend="false"
+                        chart-series="chartBloodPressure.series" chart-colours="chartBloodPressure.colours">
+                </canvas>
               </div>
             </div>
           </div>

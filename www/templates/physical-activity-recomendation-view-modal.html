@@ -4,7 +4,7 @@
        ng-disabled="currentIndex === 0" ng-click="previousRecomendation()"></a>
     <h1 class="title positive">Histórico de Recomendações de Atividade Física</h1>
     <a class="button icon-right ion-chevron-right button-clear button-positive"
-       ng-disabled="recomendations.length - 1 <= currentIndex" ng-click="nextRecomendation()"></a>
+       ng-disabled="recomendations.length - 2 <= currentIndex" ng-click="nextRecomendation()"></a>
     <a class="button icon-left ion-close button-clear button-positive" ng-click="closeModal()"></a>
   </ion-header-bar>
   <ion-content>

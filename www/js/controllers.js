@@ -273,6 +273,69 @@ angular.module('app.controllers', [])
     $scope.bloodPressureRecords = [];
     $scope.cholesterolRecords = [];
     $scope.weightRecords = [];
+    $scope.currentWeek = 0;
+    $scope.speeds = [
+      {
+        date: "31/01/2016 - 06/02/2016",
+        walk: [20, 10, 0, 0, 15, 0, 0],
+        run: [10, 10, 0, 0, 10, 0, 0]
+      },
+      {
+        date: "07/02/2016 - 13/02/2016",
+        walk: [10, 15, 0, 0, 15, 0, 0],
+        run: [10, 10, 0, 0, 10, 0, 0]
+      },
+      {
+        date: "14/02/2016 - 20/02/2016",
+        walk: [20, 15, 0, 0, 15, 10, 15],
+        run: [10, 10, 0, 0, 10, 5, 5]
+      },
+      {
+        date: "21/02/2016 - 27/02/2016",
+        walk: [20, 30, 0, 0, 15, 20, 20],
+        run: [10, 10, 0, 0, 10, 5, 5]
+      }
+    ];
+
+    var initSpeedGraph = function () {
+      $scope.currentWeek = $scope.speeds.length - 1;
+      $scope.chartSpeeds = {
+        options: {
+          bezierCurve: false
+        },
+        labels: ["S", "T", "Q", "Q", "S", "S", "D"],
+        //data: [records],
+        data: [$scope.speeds[$scope.currentWeek].walk, $scope.speeds[$scope.currentWeek].run],
+        series: ['Correr', 'Andar'],
+        colours: [{
+          fillColor: "#F15854",
+          strokeColor: "#B22222",
+          pointColor: "#800000",
+          pointStrokeColor: "#800000",
+        },{
+          fillColor: "#FAA43A",
+          strokeColor: "#FF8C00",
+          pointColor: "#FF4500",
+          pointStrokeColor: "#FF4500"
+        }]
+      };
+    };
+    $scope.nextWeek = function () {
+      if ($scope.currentWeek > $scope.speeds.length) {
+        return;
+      }
+      $scope.currentWeek++;
+      $scope.chartSpeeds.data = [$scope.speeds[$scope.currentWeek].walk, $scope.speeds[$scope.currentWeek].run];
+    };
+    $scope.previousWeek = function () {
+      if ($scope.currentWeek < 1) {
+        return;
+      }
+      $scope.currentWeek--;
+      $scope.chartSpeeds.data = [$scope.speeds[$scope.currentWeek].walk, $scope.speeds[$scope.currentWeek].run];
+    };
+
+
     function getFormattedDate(timestamp) {
       var date = new Date(timestamp);
       var month = date.getMonth() + 1;
@@ -534,6 +597,7 @@ angular.module('app.controllers', [])
         $scope.bloodPressureRecords = [];
         $scope.cholesterolRecords = [];
         $scope.weightRecords = [];
+        initSpeedGraph();
 
         if ($scope.chartHemoglobin) {
           $scope.chartHemoglobin = defaultChart;
@@ -851,7 +915,7 @@ angular.module('app.controllers', [])
           var obj = recomendations[i];
           $scope.recomendations.push(obj.toJson());
         }
-        $scope.currentIndex = 0;
+        $scope.currentIndex = $scope.recomendations.length-2;
         $scope.recomendation = $scope.recomendations[$scope.currentIndex];
       }
     });
