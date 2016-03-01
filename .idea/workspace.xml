@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d2701ed3-0294-42ed-a1e6-1389f1c2657b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers.js" afterPath="$PROJECT_DIR$/www/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/physical-activity-recomendation-view-modal.html" afterPath="$PROJECT_DIR$/www/templates/physical-activity-recomendation-view-modal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/user-main-page.html" afterPath="$PROJECT_DIR$/www/templates/user-main-page.html" />
     </list>
     <ignored path="Diabetes.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="309" column="19" selection-start-line="309" selection-start-column="19" selection-end-line="309" selection-end-column="19" />
+            <state vertical-scroll-proportion="-1.2142857">
+              <caret line="298" column="0" selection-start-line="298" selection-start-column="0" selection-end-line="298" selection-end-column="0" />
               <folding>
                 <element signature="e#17583#17741#0" expanded="false" />
                 <element signature="e#17794#17971#0" expanded="false" />
@@ -127,15 +124,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="services.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4793233">
-              <caret line="350" column="43" selection-start-line="350" selection-start-column="43" selection-end-line="350" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="134" column="30" selection-start-line="134" selection-start-column="27" selection-end-line="134" selection-end-column="30" />
               <folding>
                 <element signature="e#97#984#0" expanded="false" />
                 <element signature="e#1038#3666#0" expanded="false" />
-                <element signature="e#3722#8512#0" expanded="false" />
                 <element signature="e#8633#12123#0" expanded="false" />
                 <element signature="e#9659#9843#0" expanded="false" />
                 <element signature="e#9922#10115#0" expanded="false" />
@@ -260,8 +256,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -350,7 +347,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -920,15 +916,18 @@
       <workItem from="1456497929110" duration="74000" />
       <workItem from="1456500793927" duration="251000" />
       <workItem from="1456513459026" duration="617000" />
+      <workItem from="1456770660132" duration="617000" />
+      <workItem from="1456775838398" duration="854000" />
+      <workItem from="1456825082117" duration="600000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154234000" />
+    <option name="totallyTimeSpent" value="156305000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="963" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1355,29 +1354,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/user-personal-modal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="80" selection-start-line="31" selection-start-column="80" selection-end-line="31" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="309" column="19" selection-start-line="309" selection-start-column="19" selection-end-line="309" selection-end-column="19" />
-          <folding>
-            <element signature="e#17583#17741#0" expanded="false" />
-            <element signature="e#17794#17971#0" expanded="false" />
-            <element signature="e#19419#19481#0" expanded="false" />
-            <element signature="e#21271#21427#0" expanded="false" />
-            <element signature="e#21466#21501#0" expanded="false" />
-            <element signature="e#21546#21711#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/factories.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1403,12 +1379,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4793233">
-          <caret line="350" column="43" selection-start-line="350" selection-start-column="43" selection-end-line="350" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="134" column="30" selection-start-line="134" selection-start-column="27" selection-end-line="134" selection-end-column="30" />
           <folding>
             <element signature="e#97#984#0" expanded="false" />
             <element signature="e#1038#3666#0" expanded="false" />
-            <element signature="e#3722#8512#0" expanded="false" />
             <element signature="e#8633#12123#0" expanded="false" />
             <element signature="e#9659#9843#0" expanded="false" />
             <element signature="e#9922#10115#0" expanded="false" />
@@ -1416,6 +1391,29 @@
             <element signature="e#10461#10647#0" expanded="false" />
             <element signature="e#10716#10892#0" expanded="false" />
             <element signature="e#16357#18538#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/user-personal-modal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="80" selection-start-line="31" selection-start-column="80" selection-end-line="31" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.2142857">
+          <caret line="298" column="0" selection-start-line="298" selection-start-column="0" selection-end-line="298" selection-end-column="0" />
+          <folding>
+            <element signature="e#17583#17741#0" expanded="false" />
+            <element signature="e#17794#17971#0" expanded="false" />
+            <element signature="e#19419#19481#0" expanded="false" />
+            <element signature="e#21271#21427#0" expanded="false" />
+            <element signature="e#21466#21501#0" expanded="false" />
+            <element signature="e#21546#21711#0" expanded="false" />
           </folding>
         </state>
       </provider>
