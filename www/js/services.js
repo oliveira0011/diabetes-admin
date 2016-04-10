@@ -354,7 +354,8 @@ angular.module('app.services', [])
         title: message.title,
         body: message.body,
         date: message.date,
-        type: message.type
+        type: message.type,
+        seen: false
       });
       FirebaseService.getDBConnection().child('messages').child("out").child(FirebaseService.getCurrentUserUid())
         .child(ref.key())
@@ -362,7 +363,8 @@ angular.module('app.services', [])
           title: message.title,
           body: message.body,
           date: message.date,
-          type: message.type
+          type: message.type,
+          seen: false
         }, function () {
           FirebaseService.getDBConnection().child("users").child(userId).child("deviceToken").on('value', function (snap) {
             var remoteDeviceToken = snap.val();
