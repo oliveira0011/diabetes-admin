@@ -2,190 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2701ed3-0294-42ed-a1e6-1389f1c2657b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/blog-icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/chart-fiddles-thumbnail.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/chart-fiddles-thumbnail.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/dashboard-example-thumbnail.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/dashboard-example-thumbnail.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/dashboard.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/dashboard.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/fc-logo-gray.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/fc-logo-gray.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/fusionchart-xt-doc-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/fusioncharts-logo.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/fusioncharts-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/fusioncharts-suite-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/glyphicons-halflings-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/glyphicons-halflings.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/hero.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/homepage-device-img.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/icons.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/icons.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/left-bracket.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/logo-docs-landing-library-only.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/logo-main-footer.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/logo-main-footer.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/logo-main-header.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/logo-main-header@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/logo-maps-landing.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/logo-maps-landing.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/nav-arrows.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/open-folder.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/or-bg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/right-bracket.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/section-divider.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/sprite.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/support-icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/top-repeat-bg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/white-texture.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/img/world-map.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Converters.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Converters.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Core.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Core.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Css.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Css.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Dom.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Dom.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Model.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Model.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Rendering.Gdi.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Rendering.Wpf.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Rendering.Wpf.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Runtime.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Runtime.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Bin/FusionCharts.SharpVectors.Converters.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Bin/FusionCharts.SharpVectors.Converters.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Bin/FusionCharts.SharpVectors.Core.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Bin/FusionCharts.SharpVectors.Core.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Bin/FusionCharts.SharpVectors.Css.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Bin/FusionCharts.SharpVectors.Css.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Bin/FusionCharts.SharpVectors.Dom.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Bin/FusionCharts.SharpVectors.Dom.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Bin/FusionCharts.SharpVectors.Model.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Bin/FusionCharts.SharpVectors.Model.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Bin/FusionCharts.SharpVectors.Rendering.Gdi.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Bin/FusionCharts.SharpVectors.Rendering.Wpf.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Bin/FusionCharts.SharpVectors.Rendering.Wpf.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Bin/FusionCharts.SharpVectors.Runtime.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Bin/FusionCharts.SharpVectors.Runtime.pdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/java-export-handler/fcexporter.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/bootstrap/img/glyphicons-halflings-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/bootstrap/img/glyphicons-halflings.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/fusioncharts-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/10_b.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/10_s.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/11_b.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/11_s.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/12_b.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/12_s.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/1_b.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/1_s.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/2_b.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/2_s.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/3_b.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/3_s.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/4_b.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/4_s.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/5_b.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/5_s.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/6_b.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/6_s.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/7_b.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/7_s.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/8_b.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/8_s.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/9_b.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/example/9_s.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/blank.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_loading.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_nav_left.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_nav_right.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_shadow_e.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_shadow_n.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_shadow_ne.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_shadow_nw.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_shadow_s.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_shadow_se.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_shadow_sw.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_shadow_w.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_title_left.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_title_main.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_title_over.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancy_title_right.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancybox-x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancybox-y.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/fancybox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/license/Creative Commons - Attribution-NonCommercial-ShareAlike 4.0 International - CC BY-NC-SA 4.0.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-fusioncharts/angular-fusioncharts.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/css/mainstyle.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/css/style.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/assets/scripts/html5shiv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Exported_Images/readme.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/FCExporter.aspx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/FCExporter.aspx.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/Web.config" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-export-handler/readme.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/FCExporter.aspx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/FCExporter.aspx.vb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/asp-vb-export-handler/Web.config" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/java-export-handler/readme.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/FCExporter.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/Resources/FCExporter_RLE2IMG.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/Resources/FCExporter_RLE2PDF.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/Resources/FCExporter_SVG2ALL.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/addRule.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/banlist.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/bootstrap/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/bootstrap/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/bootstrap/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/bootstrap/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/deleteRules.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/editRule.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/exportList.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/includes/config.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/includes/leftmenu.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/ajax.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/__jquery.fancybox-1.3.4.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/jquery.easing-1.3.pack.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.pack.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/fancybox/jquery.mousewheel-3.0.4.pack.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/jquery-1.4.3.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/js/jquery.fancybox-1.3.4/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/admin/writehtaccess.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/insertToDb.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/sanitizer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/test.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/test_curl.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/export-handlers/php-export-handler/test_inkscape.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/js/fusioncharts.charts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/js/fusioncharts.gantt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/js/fusioncharts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/js/fusioncharts.maps.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/js/fusioncharts.powercharts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/js/fusioncharts.treemap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/js/fusioncharts.widgets.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/js/fusioncharts.zoomscatter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/js/maps/fusioncharts.usa.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/js/maps/fusioncharts.world.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/js/maps/readme.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/js/themes/fusioncharts.theme.carbon.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/js/themes/fusioncharts.theme.fint.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/js/themes/fusioncharts.theme.ocean.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/fusioncharts-suite-xt/js/themes/fusioncharts.theme.zune.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-chart.js/.bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-chart.js/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-chart.js/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-chart.js/angular-chart.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-chart.js/angular-chart.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-chart.js/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-chart.js/dist/angular-chart.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-chart.js/dist/angular-chart.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-chart.js/dist/angular-chart.js.tar.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-chart.js/dist/angular-chart.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-chart.js/dist/angular-chart.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-chart.js/dist/angular-chart.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-chart.js/dist/angular-chart.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-chart.js/gulpfile.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-chart.js/package.json" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers.js" afterPath="$PROJECT_DIR$/www/js/controllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/user-main-page.html" afterPath="$PROJECT_DIR$/www/templates/user-main-page.html" />
     </list>
     <ignored path="Diabetes.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -211,43 +47,77 @@
       <file leaf-file-name="user-main-page.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/user-main-page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.4705882">
-              <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
+            <state vertical-scroll-proportion="-2.4487178">
+              <caret line="77" column="40" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
                 <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="physical-activity-recomendation-view-modal.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/physical-activity-recomendation-view-modal.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/search.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="29" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.biometric.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="user.biometric.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/user.biometric.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.018891688">
+            <state vertical-scroll-proportion="-0.29411766">
               <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.0740743">
+              <caret line="13" column="64" selection-start-line="13" selection-start-column="64" selection-end-line="13" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.1928839">
+              <caret line="324" column="19" selection-start-line="324" selection-start-column="19" selection-end-line="324" selection-end-column="19" />
+              <folding>
+                <element signature="e#13245#13447#0" expanded="false" />
+                <element signature="e#19203#19361#0" expanded="false" />
+                <element signature="e#19414#19591#0" expanded="false" />
+                <element signature="e#22580#22736#0" expanded="false" />
+                <element signature="e#22775#22810#0" expanded="false" />
+                <element signature="e#22855#23020#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.3076923">
+              <caret line="31" column="42" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/services.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.259259">
+              <caret line="314" column="4" selection-start-line="314" selection-start-column="4" selection-end-line="314" selection-end-column="4" />
+              <folding>
+                <element signature="e#97#984#0" expanded="false" />
+                <element signature="e#1038#3666#0" expanded="false" />
+                <element signature="e#9659#9843#0" expanded="false" />
+                <element signature="e#9922#10115#0" expanded="false" />
+                <element signature="e#10194#10387#0" expanded="false" />
+                <element signature="e#10461#10647#0" expanded="false" />
+                <element signature="e#10716#10892#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -333,18 +203,18 @@
         <option value="$PROJECT_DIR$/platforms/android/res/xml/config.xml" />
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/www/i18n/angular_pt_pt.js" />
-        <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/templates/physical-activity-recomendation-new-modal.html" />
         <option value="$PROJECT_DIR$/www/templates/menu.html" />
         <option value="$PROJECT_DIR$/www/templates/options-bar.html" />
         <option value="$PROJECT_DIR$/www/css/style.css" />
-        <option value="$PROJECT_DIR$/www/templates/user-main-page.html" />
-        <option value="$PROJECT_DIR$/www/js/controllers.js" />
         <option value="$PROJECT_DIR$/www/templates/physical-activity-recomendation-view-modal.html" />
         <option value="$PROJECT_DIR$/www/js/factories.js" />
         <option value="$PROJECT_DIR$/www/js/services.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/index.html" />
+        <option value="$PROJECT_DIR$/www/templates/user-main-page.html" />
+        <option value="$PROJECT_DIR$/www/js/controllers.js" />
       </list>
     </option>
   </component>
@@ -533,7 +403,7 @@
     <property name="recentsLimit" value="5" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="index.htm&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/www/index.html&#10;git&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/.gitignore&#10;style.css&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/www/css/style.css&#10;services.&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/www/js/services.js&#10;confi&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/config.xml&#10;config&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/config.xml&#10;factor&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/www/js/factories.js&#10;fact&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes/www/js/factories.js" />
+    <property name="SearchEverywhereHistoryKey" value="inde&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/www/index.html&#10;controll&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/www/js/controllers.js&#10;app.js&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/www/js/app.js&#10;index.htm&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/www/index.html&#10;git&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/.gitignore&#10;style.css&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/www/css/style.css&#10;services.&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/www/js/services.js&#10;confi&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/config.xml&#10;config&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/config.xml&#10;factor&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes-Admin/www/js/factories.js&#10;fact&#9;FILE&#9;file:///Users/ivooliveira/IdeaProjects/Diabetes/www/js/factories.js" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -1114,12 +984,12 @@
       <workItem from="1460233751967" duration="1138000" />
       <workItem from="1460288948274" duration="73000" />
       <workItem from="1460294011468" duration="1388000" />
-      <workItem from="1460405951780" duration="358000" />
+      <workItem from="1460405951780" duration="3873000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168296000" />
+    <option name="totallyTimeSpent" value="171811000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="963" extended-state="6" />
@@ -1131,7 +1001,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.502442" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.326062" sideWeight="0.497558" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.325315" sideWeight="0.497558" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18864469" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1140,15 +1011,14 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1185,12 +1055,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#17583#17741#0" expanded="false" />
-            <element signature="e#17794#17971#0" expanded="false" />
-            <element signature="e#19419#19481#0" expanded="false" />
-            <element signature="e#21271#21427#0" expanded="false" />
-            <element signature="e#21466#21501#0" expanded="false" />
-            <element signature="e#21546#21711#0" expanded="false" />
+            <element signature="e#13245#13447#0" expanded="false" />
+            <element signature="e#19203#19361#0" expanded="false" />
+            <element signature="e#19414#19591#0" expanded="false" />
+            <element signature="e#22580#22736#0" expanded="false" />
+            <element signature="e#22775#22810#0" expanded="false" />
+            <element signature="e#22855#23020#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1228,12 +1098,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#17583#17741#0" expanded="false" />
-            <element signature="e#17794#17971#0" expanded="false" />
-            <element signature="e#19419#19481#0" expanded="false" />
-            <element signature="e#21271#21427#0" expanded="false" />
-            <element signature="e#21466#21501#0" expanded="false" />
-            <element signature="e#21546#21711#0" expanded="false" />
+            <element signature="e#13245#13447#0" expanded="false" />
+            <element signature="e#19203#19361#0" expanded="false" />
+            <element signature="e#19414#19591#0" expanded="false" />
+            <element signature="e#22580#22736#0" expanded="false" />
+            <element signature="e#22775#22810#0" expanded="false" />
+            <element signature="e#22855#23020#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1271,12 +1141,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#17583#17741#0" expanded="false" />
-            <element signature="e#17794#17971#0" expanded="false" />
-            <element signature="e#19419#19481#0" expanded="false" />
-            <element signature="e#21271#21427#0" expanded="false" />
-            <element signature="e#21466#21501#0" expanded="false" />
-            <element signature="e#21546#21711#0" expanded="false" />
+            <element signature="e#13245#13447#0" expanded="false" />
+            <element signature="e#19203#19361#0" expanded="false" />
+            <element signature="e#19414#19591#0" expanded="false" />
+            <element signature="e#22580#22736#0" expanded="false" />
+            <element signature="e#22775#22810#0" expanded="false" />
+            <element signature="e#22855#23020#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1314,12 +1184,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
           <folding>
-            <element signature="e#17583#17741#0" expanded="false" />
-            <element signature="e#17794#17971#0" expanded="false" />
-            <element signature="e#19419#19481#0" expanded="false" />
-            <element signature="e#21271#21427#0" expanded="false" />
-            <element signature="e#21466#21501#0" expanded="false" />
-            <element signature="e#21546#21711#0" expanded="false" />
+            <element signature="e#13245#13447#0" expanded="false" />
+            <element signature="e#19203#19361#0" expanded="false" />
+            <element signature="e#19414#19591#0" expanded="false" />
+            <element signature="e#22580#22736#0" expanded="false" />
+            <element signature="e#22775#22810#0" expanded="false" />
+            <element signature="e#22855#23020#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1422,13 +1292,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51039696">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/physical-activity-recomendation-new-modal.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28712872">
@@ -1454,35 +1317,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="160" column="33" selection-start-line="160" selection-start-column="27" selection-end-line="160" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/factories.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.777779">
-          <caret line="366" column="21" selection-start-line="366" selection-start-column="21" selection-end-line="366" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.8333333">
-          <caret line="496" column="56" selection-start-line="496" selection-start-column="48" selection-end-line="496" selection-end-column="56" />
-          <folding>
-            <element signature="e#17583#17741#0" expanded="false" />
-            <element signature="e#17794#17971#0" expanded="false" />
-            <element signature="e#19419#19481#0" expanded="false" />
-            <element signature="e#21271#21427#0" expanded="false" />
-            <element signature="e#21466#21501#0" expanded="false" />
-            <element signature="e#21546#21711#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1558,18 +1392,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/user-main-page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.4705882">
-          <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/lib/angular-fusioncharts/angular-fusioncharts.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.036674816">
@@ -1578,19 +1400,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
+    <entry file="file://$PROJECT_DIR$/www/templates/user.biometric.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34005037">
-          <caret line="18" column="77" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
+        <state vertical-scroll-proportion="-0.29411766">
+          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/user.biometric.html">
+    <entry file="file://$PROJECT_DIR$/www/js/factories.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.018891688">
-          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.084269665">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+          <folding>
+            <element signature="e#364#466#0" expanded="false" />
+            <element signature="e#515#623#0" expanded="false" />
+            <element signature="e#688#1032#0" expanded="false" />
+            <element signature="e#1090#1934#0" expanded="false" />
+            <element signature="e#1981#2305#0" expanded="false" />
+            <element signature="e#2342#2712#0" expanded="false" />
+            <element signature="e#2773#3039#0" expanded="false" />
+            <element signature="e#3089#3444#0" expanded="false" />
+            <element signature="e#3516#3829#0" expanded="false" />
+            <element signature="e#3901#4214#0" expanded="false" />
+            <element signature="e#4276#4547#0" expanded="false" />
+            <element signature="e#4604#4845#0" expanded="false" />
+            <element signature="e#4889#8793#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.259259">
+          <caret line="314" column="4" selection-start-line="314" selection-start-column="4" selection-end-line="314" selection-end-column="4" />
+          <folding>
+            <element signature="e#97#984#0" expanded="false" />
+            <element signature="e#1038#3666#0" expanded="false" />
+            <element signature="e#9659#9843#0" expanded="false" />
+            <element signature="e#9922#10115#0" expanded="false" />
+            <element signature="e#10194#10387#0" expanded="false" />
+            <element signature="e#10461#10647#0" expanded="false" />
+            <element signature="e#10716#10892#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0740743">
+          <caret line="13" column="64" selection-start-line="13" selection-start-column="64" selection-end-line="13" selection-end-column="64" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.3076923">
+          <caret line="31" column="42" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/user-main-page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.4487178">
+          <caret line="77" column="40" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1928839">
+          <caret line="324" column="19" selection-start-line="324" selection-start-column="19" selection-end-line="324" selection-end-column="19" />
+          <folding>
+            <element signature="e#13245#13447#0" expanded="false" />
+            <element signature="e#19203#19361#0" expanded="false" />
+            <element signature="e#19414#19591#0" expanded="false" />
+            <element signature="e#22580#22736#0" expanded="false" />
+            <element signature="e#22775#22810#0" expanded="false" />
+            <element signature="e#22855#23020#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

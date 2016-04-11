@@ -73,12 +73,12 @@
                   <button class="button button-icon ion-chevron-right positive"
                           ng-disabled="currentWeek > speeds.length - 2" ng-click="nextWeek()"></button>
                 </div>
-                <canvas ng-if="!isEmpty(chartSpeeds.data)" id="lineSpeeds" class="chart chart-bar"
-                        chart-options="chartSpeeds.options"
-                        chart-data="chartSpeeds.data"
-                        chart-labels="chartSpeeds.labels" chart-legend="false"
-                        chart-series="chartSpeeds.series" chart-colours="chartSpeeds.colours">
-                </canvas>
+                <fusioncharts width="100%"
+                              id="lineSpeeds"
+                              type="zoomline"
+                              chart="{{chartSpeeds.attrs}}" categories="{{chartSpeeds.categories}}"
+                              dataset="{{chartSpeeds.dataset}}">
+                </fusioncharts>
               </div>
             </div>
           </div>
@@ -119,34 +119,36 @@
           <div class="col">
             <div class="left-border positive-border card">
               <div class="item item-body">HbA1c <span class="positive">[%]</span>
-                <canvas ng-if="!isEmpty(chartHemoglobin.data)" id="lineHemoglobin" class="chart chart-line"
-                        chart-options="chartHemoglobin.options"
-                        chart-data="chartHemoglobin.data"
-                        chart-labels="chartHemoglobin.labels" chart-legend="false"
-                        chart-series="chartHemoglobin.series" chart-colours="chartHemoglobin.colours">
-                </canvas>
+                <fusioncharts width="100%"
+                              id="lineHemoglobin"
+                              type="zoomline"
+                              chart="{{chartHemoglobin.attrs}}" categories="{{chartHemoglobin.categories}}"
+                              dataset="{{chartHemoglobin.dataset}}">
+                </fusioncharts>
               </div>
             </div>
           </div>
           <div class="col">
             <div class="left-border positive-border card">
               <div class="item item-body">Colesterol LDL<span class="positive">[mg/dL]</span>
-                <canvas id="lineCholesterol" class="chart chart-bar" chart-data="chartCholesterol.data"
-                        chart-options="chartCholesterol.options"
-                        chart-labels="chartCholesterol.labels" chart-legend="false  "
-                        chart-series="chartCholesterol.series" chart-colours="chartCholesterol.colours">
-                </canvas>
+                <fusioncharts width="100%"
+                              id="lineCholesterol"
+                              type="zoomline"
+                              chart="{{chartCholesterol.attrs}}" categories="{{chartCholesterol.categories}}"
+                              dataset="{{chartCholesterol.dataset}}">
+                </fusioncharts>
               </div>
             </div>
           </div>
           <div class="col">
             <div class="left-border positive-border card">
               <div class="item item-body">Tensão Arterial (Sistólica / Diastólica) <span class="positive">[mmHg]</span>
-                <canvas id="lineBloodPressure" class="chart chart-line" chart-data="chartBloodPressure.data"
-                        chart-options="chartBloodPressure.options"
-                        chart-labels="chartBloodPressure.labels" chart-legend="false"
-                        chart-series="chartBloodPressure.series" chart-colours="chartBloodPressure.colours">
-                </canvas>
+                <fusioncharts width="100%"
+                              id="lineBloodPressure"
+                              type="zoomline"
+                              chart="{{chartBloodPressure.attrs}}" categories="{{chartBloodPressure.categories}}"
+                              dataset="{{chartBloodPressure.dataset}}">
+                </fusioncharts>
               </div>
             </div>
           </div>

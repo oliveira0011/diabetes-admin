@@ -268,7 +268,36 @@ angular.module('app.controllers', [])
     }
   })
   .controller('MainCtrl', function ($scope, $timeout, $window, $state, ModalService, BiomedicService, BiomedicType, UsersService, RecomendationService, FirebaseService) {
-    $scope.selectedUser;
+
+    var initChart = function (caption, subcaption, colors) {
+      return {
+        attrs: {
+          caption: caption,
+          subcaption: subcaption,
+          bgcolor: "FFFFFF",
+          animation: "0",
+          showalternatehgridcolor: "0",
+          divlinecolor: 'CCCCCC',
+          showvalues: "0",
+          showcanvasborder: "0",
+          legendshadow: "0",
+          showborder: "0",
+          paletteColors: colors,
+          dynamicaxis: "1",
+          scrollheight: "10"
+        },
+        //labels: labels,
+        dataset: [{
+          "seriesname": "",
+          "data": []
+        }],
+        categories: [{
+          category: []
+        }],
+        colors: colors
+      }
+    };
+
     $scope.hemoglobinRecords = [];
     $scope.bloodPressureRecords = [];
     $scope.cholesterolRecords = [];
@@ -293,46 +322,67 @@ angular.module('app.controllers', [])
       {
         date: "21/02/2016 - 27/02/2016",
         walk: [20, 30, 0, 0, 15, 20, 20],
-        run: [10, 10, 0, 0, 10, 5, 5]
+        run: [10, 8, 0, 0, 10, 5, 5]
       }
     ];
 
+
+    $scope.chartCholesterol = initChart('', '', "#DECF3F");
+    $scope.chartWeight = initChart('', '', "#B276B2, #F17CB0");
+    $scope.chartHemoglobin = initChart('', '', "#F15854");
+    $scope.chartBloodPressure = initChart('', '', "#4D4D4D, #5DA5DA");
+    $scope.chartSpeeds = initChart('', '', "#F15854, #FAA43A");
+    $scope.chartSpeeds.dataset = [{
+      "seriesname": "Correr",
+      "data": []
+    }, {
+      "seriesname": "Andar",
+      "data": []
+    }];
+    $scope.chartSpeeds.categories = [{
+      category: ["S", "T", "Q", "Q", "S", "S", "D"]
+    }];
+    var extraValue = 0.0000000000000000000000000000000000000000000000001;
     var initSpeedGraph = function () {
       $scope.currentWeek = $scope.speeds.length - 1;
-      $scope.chartSpeeds = {
-        options: {
-          bezierCurve: false
-        },
-        labels: ["S", "T", "Q", "Q", "S", "S", "D"],
-        //data: [records],
-        data: [$scope.speeds[$scope.currentWeek].walk, $scope.speeds[$scope.currentWeek].run],
-        series: ['Correr', 'Andar'],
-        colours: [{
-          fillColor: "#F15854",
-          strokeColor: "#B22222",
-          pointColor: "#800000",
-          pointStrokeColor: "#800000",
-        },{
-          fillColor: "#FAA43A",
-          strokeColor: "#FF8C00",
-          pointColor: "#FF4500",
-          pointStrokeColor: "#FF4500"
-        }]
-      };
+      for (var i = 0; i < $scope.speeds[$scope.currentWeek].walk.length; i++) {
+        var valueWalk = $scope.speeds[$scope.currentWeek].walk[i];
+        $scope.chartSpeeds.dataset[1].data.push({value: valueWalk + extraValue});
+      }
+      for (var j = 0; j < $scope.speeds[$scope.currentWeek].run.length; j++) {
+        var valueRun = $scope.speeds[$scope.currentWeek].run[j];
+        $scope.chartSpeeds.dataset[0].data.push({value: valueRun + extraValue});
+      }
     };
     $scope.nextWeek = function () {
+      $scope.chartSpeeds.dataset[1].data=[];
       if ($scope.currentWeek > $scope.speeds.length) {
         return;
       }
       $scope.currentWeek++;
-      $scope.chartSpeeds.data = [$scope.speeds[$scope.currentWeek].walk, $scope.speeds[$scope.currentWeek].run];
+      for (var i = 0; i < $scope.speeds[$scope.currentWeek].walk.length; i++) {
+        var valueWalk = $scope.speeds[$scope.currentWeek].walk[i];
+        $scope.chartSpeeds.dataset[1].data.push({value: valueWalk + extraValue});
+      }
+      for (var j = 0; j < $scope.speeds[$scope.currentWeek].run.length; j++) {
+        var valueRun = $scope.speeds[$scope.currentWeek].run[j];
+        $scope.chartSpeeds.dataset[0].data.push({value: valueRun + extraValue});
+      }
     };
     $scope.previousWeek = function () {
+      $scope.chartSpeeds.dataset[1].data=[];
       if ($scope.currentWeek < 1) {
         return;
       }
       $scope.currentWeek--;
-      $scope.chartSpeeds.data = [$scope.speeds[$scope.currentWeek].walk, $scope.speeds[$scope.currentWeek].run];
+      for (var i = 0; i < $scope.speeds[$scope.currentWeek].walk.length; i++) {
+        var valueWalk = $scope.speeds[$scope.currentWeek].walk[i];
+        $scope.chartSpeeds.dataset[1].data.push({value: valueWalk});
+      }
+      for (var j = 0; j < $scope.speeds[$scope.currentWeek].run.length; j++) {
+        var valueRun = $scope.speeds[$scope.currentWeek].run[j];
+        $scope.chartSpeeds.dataset[0].data.push({value: valueRun});
+      }
     };
 
 
@@ -344,9 +394,9 @@ angular.module('app.controllers', [])
       return month + '-' + year;
     }
 
-    var handler = function (type, retrievedRecords) {
 
-      if (!retrievedRecords || retrievedRecords == null) {
+    var handler = function (type, retrievedRecords) {
+      if (!retrievedRecords) {
         return;
       }
       var arr = Object.keys(retrievedRecords).map(function (k) {
@@ -357,24 +407,26 @@ angular.module('app.controllers', [])
       }
       var records = [];
       var colors = {};
-      var labels = [];
+      var labels = [{
+        category: []
+      }];
       switch (type) {
         case BiomedicType.HEMOGLOBIN:
-          colors = {
-            fillColor: "#F15854",
-            strokeColor: "#B22222",
-            pointColor: "#800000",
-            pointStrokeColor: "#800000",
-          };
-          records = $scope.hemoglobinRecords;
+          colors = $scope.chartHemoglobin.colors;
+          records = [{
+            "seriesname": "Hemoglobina",
+            "data": $scope.hemoglobinRecords
+          }];
           break;
         case BiomedicType.BLOOD_PRESSURE:
-
-          if (retrievedRecords.length != 2 || !retrievedRecords[0] || retrievedRecords[0] == null || !retrievedRecords[1] || retrievedRecords[1] == null) {
-            return;
-          }
-          records = [[], []];
-          labels = [];
+          colors = $scope.chartBloodPressure.colors;
+          records = [{
+            "seriesname": "Tensão Arterial Máxima",
+            "data": []
+          }, {
+            "seriesname": "Tensão Arterial Mínima",
+            "data": []
+          }];
           var minRecords = Object.keys(retrievedRecords[0]).map(function (k) {
             return retrievedRecords[0][k]
           });
@@ -395,22 +447,22 @@ angular.module('app.controllers', [])
             var date = getFormattedDate(record.biomedicDate);
             var nextRecord;
             var nextDate;
-            if (labels.indexOf(date) == -1) {
+            if (labels[0].category.indexOf(date) == -1) {
               if (record.type == BiomedicType.MIN_BLOOD_PRESSURE) {
                 nextRecord = rec[cMin + 1];
               } else if (record.type == BiomedicType.MAX_BLOOD_PRESSURE) {
                 nextRecord = rec[cMax + 1];
               }
-              labels.push(date);
+              labels[0].category.push({label: date});
               if (nextRecord) {
                 nextDate = getFormattedDate(nextRecord.biomedicDate);
                 if (nextDate == date) {
                   isNew = false;
                   if (nextRecord.type == BiomedicType.MIN_BLOOD_PRESSURE) {
-                    records[1].push(nextRecord.value);
+                    records[1].data.push({value: nextRecord.value});
                     i++;
                   } else if (nextRecord.type == BiomedicType.MAX_BLOOD_PRESSURE) {
-                    records[0].push(nextRecord.value);
+                    records[0].data.push({value: nextRecord.value});
                     i++;
                   }
                   cMin++;
@@ -418,10 +470,10 @@ angular.module('app.controllers', [])
                 } else {
                   nextRecord = undefined;
                   if (record.type == BiomedicType.MIN_BLOOD_PRESSURE) {
-                    records[0].push(0);
+                    records[0].data.push({value: 0});
                     cMin++;
                   } else if (record.type == BiomedicType.MAX_BLOOD_PRESSURE) {
-                    records[1].push(0);
+                    records[1].data.push({value: 0});
                     cMax++;
                   }
                 }
@@ -432,26 +484,18 @@ angular.module('app.controllers', [])
 
 
             if (record.type == BiomedicType.MIN_BLOOD_PRESSURE) {
-              records[1].push(record.value);
+              records[1].data.push({value: record.value});
             } else if (record.type == BiomedicType.MAX_BLOOD_PRESSURE) {
-              records[0].push(record.value);
+              records[0].data.push({value: record.value});
             }
           }
-          colors = {
-            fillColor: "#FAA43A",
-            strokeColor: "#FF8C00",
-            pointColor: "#FF4500",
-            pointStrokeColor: "#FF4500"
-          };
           break;
         case BiomedicType.CHOLESTEROL:
-          colors = {
-            fillColor: "#F17CB0",
-            strokeColor: "#F08080",
-            pointColor: "#CD5C5C",
-            pointStrokeColor: "#CD5C5C"
-          };
-          records = $scope.cholesterolRecords;
+          colors = $scope.chartCholesterol.colors;
+          records = [{
+            "seriesname": "Colesterol",
+            "data": $scope.cholesterolRecords
+          }];
           break;
         case BiomedicType.WEIGHT:
           colors = {
@@ -461,55 +505,16 @@ angular.module('app.controllers', [])
             pointStrokeColor: "#CD5C5C"
           };
           records = $scope.weightRecords;
-          break;
-      }
-      if (records.length == 0) {
-
-
-        arr.sort(function (a, b) {
-          return parseFloat(a.biomedicDate) - parseFloat(b.biomedicDate);
-        });
-        angular.forEach(arr, function (record) {
-          records.push(record.value);
-          labels.push(getFormattedDate(record.biomedicDate));
-        });
-
-      }
-      switch (type) {
-        case BiomedicType.HEMOGLOBIN:
-          $scope.chartHemoglobin = {
-            options: {
-              bezierCurve: false
-            },
-            labels: labels,
-            data: [records],
-            series: ['Hemoglobina'],
-            colours: [colors]
-          };
-          break;
-        case BiomedicType.BLOOD_PRESSURE:
-          $scope.chartBloodPressure = {
-            options: {
-              bezierCurve: false
-            },
-            labels: labels,
-            data: records,
-            series: ['Tensão Arterial Máxima', 'Tensão Arterial Mínima'],
-            colours: [colors]
-          };
-          break;
-        case BiomedicType.CHOLESTEROL:
-          $scope.chartCholesterol = {
-            options: {
-              bezierCurve: false
-            },
-            labels: labels.splice(0, 3),
-            data: [records.splice(0, 3)],
-            series: ['Colesterol'],
-            colours: [colors]
-          };
-          break;
-        case BiomedicType.WEIGHT:
+          if (records.length == 0) {
+            labels = [];
+            arr.sort(function (a, b) {
+              return parseFloat(a.biomedicDate) - parseFloat(b.biomedicDate);
+            });
+            angular.forEach(arr, function (record) {
+              records.push(record.value);
+              labels.push(getFormattedDate(record.biomedicDate));
+            });
+          }
           var imc = [];
           var merged = [];
           for (var i = 0; i < records.length; i++) {//IMC calculation
@@ -517,15 +522,35 @@ angular.module('app.controllers', [])
             merged[i] = {weight: records[i], imc: imc[i]};
           }
           $scope.chartWeight = {
-            options: {
-              bezierCurve: false
-            },
             labels: labels,
             data: merged,
             //data: [records, imc],
             series: ['Peso', 'IMC'],
             colours: [colors]
           };
+          return;
+      }
+      if (records[0].data.length == 0) {
+        arr.sort(function (a, b) {
+          return parseFloat(a.biomedicDate) - parseFloat(b.biomedicDate);
+        });
+        angular.forEach(arr, function (record) {
+          records[0].data.push({value: record.value});
+          labels[0].category.push({label: getFormattedDate(record.biomedicDate)});
+        });
+      }
+      switch (type) {
+        case BiomedicType.HEMOGLOBIN:
+          $scope.chartHemoglobin.dataset = records;
+          $scope.chartHemoglobin.categories = labels;
+          break;
+        case BiomedicType.BLOOD_PRESSURE:
+          $scope.chartBloodPressure.dataset = records;
+          $scope.chartBloodPressure.categories = labels;
+          break;
+        case BiomedicType.CHOLESTEROL:
+          $scope.chartCholesterol.dataset = records;
+          $scope.chartCholesterol.categories = labels;
           break;
       }
       if (!$scope.$$phase) {
@@ -578,11 +603,6 @@ angular.module('app.controllers', [])
       var year = date.getFullYear();
       return day + "/" + month + '/' + year + " " + hours + ":" + minutes + ":" + seconds;
     };
-    var defaultChart = {
-      labels: [''],
-      data: [],
-      series: ['']
-    };
     $scope.selectUser = function () {
       ModalService
         .init('templates/users-modal.html', null)
@@ -599,20 +619,16 @@ angular.module('app.controllers', [])
         $scope.weightRecords = [];
         initSpeedGraph();
 
-        if ($scope.chartHemoglobin) {
-          $scope.chartHemoglobin = defaultChart;
-        }
-        if ($scope.chartBloodPressure) {
-          $scope.chartBloodPressure = defaultChart;
-        }
-        if ($scope.chartCholesterol) {
-          $scope.chartCholesterol = defaultChart;
-        }
         if ($scope.chartWeight) {
-          $scope.chartWeight = defaultChart;
+          $scope.chartWeight = {
+            labels: [''],
+            data: [],
+            series: ['']
+          };
         }
 
         ModalService.close();
+
         BiomedicService.getHemoglobinRecords(user.id, handler);
         BiomedicService.getBloodPressureRecords(user.id, handler);
         BiomedicService.getCholesterolRecords(user.id, handler);
@@ -915,7 +931,7 @@ angular.module('app.controllers', [])
           var obj = recomendations[i];
           $scope.recomendations.push(obj.toJson());
         }
-        $scope.currentIndex = $scope.recomendations.length-2;
+        $scope.currentIndex = $scope.recomendations.length - 2;
         $scope.recomendation = $scope.recomendations[$scope.currentIndex];
       }
     });
