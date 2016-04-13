@@ -267,7 +267,17 @@ angular.module('app.controllers', [])
       });
     }
   })
-  .controller('MainCtrl', function ($scope, $timeout, $window, $state, ModalService, BiomedicService, BiomedicType, UsersService, RecomendationService, FirebaseService) {
+  .controller('MainCtrl', function ($scope, $timeout, $window, $state, ModalService, BiomedicService, BiomedicType, UsersService, RecomendationService, FirebaseService, PhysicalActivityType) {
+
+    $scope.getFormattedDateSpeed = function (timestamp) {
+      var date = new Date(timestamp);
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      month = month < 10 ? '0' + month : month;
+      day = day < 10 ? '0' + day : day;
+      var year = date.getFullYear();
+      return day + "-" + month + '-' + year;
+    };
 
     var initChart = function (caption, subcaption, colors) {
       return {
@@ -302,7 +312,10 @@ angular.module('app.controllers', [])
     $scope.bloodPressureRecords = [];
     $scope.cholesterolRecords = [];
     $scope.weightRecords = [];
-    $scope.currentWeek = 0;
+    $scope.currentWeek = new Date().getTime();
+    $scope.currentWeekFormatted = $scope.getFormattedDateSpeed($scope.currentWeek - 604800000) + " - " + $scope.getFormattedDateSpeed($scope.currentWeek);
+
+
     $scope.speeds = [
       {
         date: "31/01/2016 - 06/02/2016",
@@ -332,56 +345,122 @@ angular.module('app.controllers', [])
     $scope.chartHemoglobin = initChart('', '', "#F15854");
     $scope.chartBloodPressure = initChart('', '', "#4D4D4D, #5DA5DA");
     $scope.chartSpeeds = initChart('', '', "#F15854, #FAA43A");
-    $scope.chartSpeeds.dataset = [{
-      "seriesname": "Correr",
-      "data": []
-    }, {
-      "seriesname": "Andar",
-      "data": []
-    }];
+
     $scope.chartSpeeds.categories = [{
-      category: ["S", "T", "Q", "Q", "S", "S", "D"]
+      category: []
+    }, {
+      category: []
+    }, {
+      category: []
+    }, {
+      category: []
+    }, {
+      category: []
+    }, {
+      category: []
+    }, {
+      category: []
     }];
-    var extraValue = 0.0000000000000000000000000000000000000000000000001;
-    var initSpeedGraph = function () {
-      $scope.currentWeek = $scope.speeds.length - 1;
-      for (var i = 0; i < $scope.speeds[$scope.currentWeek].walk.length; i++) {
-        var valueWalk = $scope.speeds[$scope.currentWeek].walk[i];
-        $scope.chartSpeeds.dataset[1].data.push({value: valueWalk + extraValue});
+
+    $scope.chartSpeeds.dataset = [{
+      "seriesName": "Idle",
+      "data": [{}, {}, {}, {}, {}, {}, {}]
+    }, {
+      "seriesName": "Andar",
+      "data": [{}, {}, {}, {}, {}, {}, {}]
+    }, {
+      "seriesName": "Correr",
+      "data": [{}, {}, {}, {}, {}, {}, {}]
+    }];
+
+    $scope.chartSpeeds.trendlines = [
+      {
+        "line": [
+          {
+            "startvalue": "0",
+            "color": "#0075c2",
+            "displayvalue": "Caminhada",
+            "valueOnRight": "1",
+            "thickness": "1",
+            "showBelow": "1",
+          },
+          {
+            "startvalue": "0",
+            "color": "#1aaf5d",
+            "displayvalue": "Corrida",
+            "valueOnRight": "1",
+            "thickness": "1",
+            "showBelow": "1",
+          }
+        ]
       }
-      for (var j = 0; j < $scope.speeds[$scope.currentWeek].run.length; j++) {
-        var valueRun = $scope.speeds[$scope.currentWeek].run[j];
-        $scope.chartSpeeds.dataset[0].data.push({value: valueRun + extraValue});
+    ];
+
+    var fillSerie = function (serieNumber, date) {
+      serieNumber = 6 - serieNumber;
+      var formattedDate = $scope.getFormattedDateSpeed(date - (86400000 * serieNumber));
+      $scope.chartSpeeds.categories[0].category[serieNumber] = {label: formattedDate};
+      if (serieNumber == 0) {
+        FirebaseService.getDBConnection().child('physical_activity').child($scope.selectedUser.id).child(formattedDate)
+          .on('value', function (snap) {
+            $scope.chartSpeeds.dataset[0].data[serieNumber] = {};
+            $scope.chartSpeeds.dataset[1].data[serieNumber] = {};
+            $scope.chartSpeeds.dataset[2].data[serieNumber] = {};
+            var items = snap.val();
+            console.log(formattedDate, items);
+            if (items == null) {
+              items = {
+                idle: 0,
+                walk: 0,
+                run: 0
+              }
+            }
+            $scope.chartSpeeds.dataset[0].data[serieNumber] = ({label: 'Idle', value: items.idle});
+            $scope.chartSpeeds.dataset[1].data[serieNumber] = ({label: 'Andar', value: items.walk});
+            $scope.chartSpeeds.dataset[2].data[serieNumber] = ({label: 'Correr', value: items.run});
+          });
+      } else {
+        FirebaseService.getDBConnection().child('physical_activity').child($scope.selectedUser.id).child(formattedDate)
+          .once('value', function (snap) {
+            $scope.chartSpeeds.dataset[0].data[serieNumber] = {};
+            $scope.chartSpeeds.dataset[1].data[serieNumber] = {};
+            $scope.chartSpeeds.dataset[2].data[serieNumber] = {};
+            var items = snap.val();
+            console.log(formattedDate, items);
+            if (items == null) {
+              items = {
+                idle: 0,
+                walk: 0,
+                run: 0
+              }
+            }
+            if (items == null) {
+              items = {
+                idle: 0,
+                walk: 0,
+                run: 0
+              }
+            }
+            console.log(serieNumber);
+            $scope.chartSpeeds.dataset[0].data[serieNumber] = ({label: 'Idle', value: items.idle});
+            $scope.chartSpeeds.dataset[1].data[serieNumber] = ({label: 'Andar', value: items.walk});
+            $scope.chartSpeeds.dataset[2].data[serieNumber] = ({label: 'Correr', value: items.run});
+          });
       }
     };
+
     $scope.nextWeek = function () {
-      $scope.chartSpeeds.dataset[1].data=[];
-      if ($scope.currentWeek > $scope.speeds.length) {
-        return;
-      }
-      $scope.currentWeek++;
-      for (var i = 0; i < $scope.speeds[$scope.currentWeek].walk.length; i++) {
-        var valueWalk = $scope.speeds[$scope.currentWeek].walk[i];
-        $scope.chartSpeeds.dataset[1].data.push({value: valueWalk + extraValue});
-      }
-      for (var j = 0; j < $scope.speeds[$scope.currentWeek].run.length; j++) {
-        var valueRun = $scope.speeds[$scope.currentWeek].run[j];
-        $scope.chartSpeeds.dataset[0].data.push({value: valueRun + extraValue});
+      $scope.currentWeek += 604800000;
+      $scope.currentWeekFormatted = $scope.getFormattedDateSpeed($scope.currentWeek - 604800000) + " - " + $scope.getFormattedDateSpeed($scope.currentWeek);
+      for (var i = 0; i < 7; i++) {
+        fillSerie(i, new Date($scope.currentWeek));//week millis
       }
     };
     $scope.previousWeek = function () {
-      $scope.chartSpeeds.dataset[1].data=[];
-      if ($scope.currentWeek < 1) {
-        return;
-      }
-      $scope.currentWeek--;
-      for (var i = 0; i < $scope.speeds[$scope.currentWeek].walk.length; i++) {
-        var valueWalk = $scope.speeds[$scope.currentWeek].walk[i];
-        $scope.chartSpeeds.dataset[1].data.push({value: valueWalk});
-      }
-      for (var j = 0; j < $scope.speeds[$scope.currentWeek].run.length; j++) {
-        var valueRun = $scope.speeds[$scope.currentWeek].run[j];
-        $scope.chartSpeeds.dataset[0].data.push({value: valueRun});
+      $scope.currentWeek -= 604800000;
+      $scope.currentWeekFormatted = $scope.getFormattedDateSpeed($scope.currentWeek - 604800000) + " - " + $scope.getFormattedDateSpeed($scope.currentWeek);
+      for (var i = 0; i < 7; i++) {
+        fillSerie(i, new Date($scope.currentWeek));//week millis
       }
     };
 
@@ -427,6 +506,9 @@ angular.module('app.controllers', [])
             "seriesname": "Tensão Arterial Mínima",
             "data": []
           }];
+          if (!retrievedRecords[0] || !retrievedRecords[1]) {
+            return;
+          }
           var minRecords = Object.keys(retrievedRecords[0]).map(function (k) {
             return retrievedRecords[0][k]
           });
@@ -617,7 +699,12 @@ angular.module('app.controllers', [])
         $scope.bloodPressureRecords = [];
         $scope.cholesterolRecords = [];
         $scope.weightRecords = [];
-        initSpeedGraph();
+
+        $scope.currentWeek = new Date().getTime();
+        $scope.currentWeekFormatted = $scope.getFormattedDateSpeed($scope.currentWeek - 604800000) + " - " + $scope.getFormattedDateSpeed($scope.currentWeek);
+        for (var i = 0; i < 7; i++) {
+          fillSerie(i, $scope.currentWeek);
+        }
 
         if ($scope.chartWeight) {
           $scope.chartWeight = {
@@ -645,6 +732,47 @@ angular.module('app.controllers', [])
         RecomendationService.getCurrentRecomendation($scope.selectedUser.id, function (recomendation) {
           if (recomendation) {
             $scope.currentRecomendation = recomendation.toJson();
+            console.log($scope.currentRecomendation);
+
+            for (var i = 0; i < $scope.currentRecomendation.exercises.length; i++) {
+              var obj = $scope.currentRecomendation.exercises[i];
+
+              var roundedMinutes = Math.round(obj.duration / 60);
+              var roundedSeconds = (obj.duration % 60);
+
+              if (obj.type == PhysicalActivityType.RUN) {
+                $scope.chartSpeeds.trendlines[1].startvalue = obj.duration;
+                $scope.chartSpeeds.trendlines[1].tooltext = "Corrida" + roundedMinutes + ":" + roundedSeconds + "m";
+              } else if (obj.type == PhysicalActivityType.WALK) {
+                $scope.chartSpeeds.trendlines[0].startvalue = obj.duration;
+                $scope.chartSpeeds.trendlines[0].tooltext = "Andar" + roundedMinutes + ":" + roundedSeconds + "m";
+              }
+            }
+
+            $scope.chartSpeeds.trendlines = [
+              {
+                "line": [
+                  {
+                    "startvalue": "600",
+                    "color": "#0075c2",
+                    "displayvalue": "Caminhada",
+                    "valueOnRight": "1",
+                    "thickness": "1",
+                    "showBelow": "1",
+                    "tooltext": "Andar: " + roundedMinutes + ":" + roundedSeconds + "m"
+                  },
+                  {
+                    "startvalue": "200",
+                    "color": "#1aaf5d",
+                    "displayvalue": "Corrida",
+                    "valueOnRight": "1",
+                    "thickness": "1",
+                    "showBelow": "1",
+                    "tooltext": "Corrida: " + roundedMinutes + ":" + roundedSeconds + "m"
+                  }
+                ]
+              }
+            ];
           }
         });
 

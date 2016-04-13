@@ -66,17 +66,19 @@
               <div class="item item-body">Atividade Física<span class="positive">[%]</span>
                 <div class="text-right">
                   <div class="positive">
-                    {{speeds[currentWeek].date}}
+                    {{currentWeekFormatted}}
                   </div>
-                  <button class="button button-icon ion-chevron-left positive" ng-disabled="currentWeek < 1"
+                  <button class="button button-icon ion-chevron-left positive"
                           ng-click="previousWeek()"></button>
                   <button class="button button-icon ion-chevron-right positive"
-                          ng-disabled="currentWeek > speeds.length - 2" ng-click="nextWeek()"></button>
+                          ng-click="nextWeek()"></button>
                 </div>
                 <fusioncharts width="100%"
                               id="lineSpeeds"
-                              type="zoomline"
-                              chart="{{chartSpeeds.attrs}}" categories="{{chartSpeeds.categories}}"
+                              type="mscolumn2d"
+                              chart="{{chartSpeeds.attrs}}"
+                              trendlines="{{chartSpeeds.trendlines}}"
+                              categories="{{chartSpeeds.categories}}"
                               dataset="{{chartSpeeds.dataset}}">
                 </fusioncharts>
               </div>
