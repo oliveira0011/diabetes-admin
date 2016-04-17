@@ -268,7 +268,6 @@ angular.module('app.controllers', [])
     }
   })
   .controller('MainCtrl', function ($scope, $timeout, $window, $state, ModalService, BiomedicService, BiomedicType, UsersService, RecomendationService, FirebaseService, PhysicalActivityType) {
-
     $scope.getFormattedDateSpeed = function (timestamp) {
       var date = new Date(timestamp);
       var day = date.getDate();
@@ -400,53 +399,31 @@ angular.module('app.controllers', [])
       serieNumber = 6 - serieNumber;
       var formattedDate = $scope.getFormattedDateSpeed(date - (86400000 * serieNumber));
       $scope.chartSpeeds.categories[0].category[serieNumber] = {label: formattedDate};
-      if (serieNumber == 0) {
-        FirebaseService.getDBConnection().child('physical_activity').child($scope.selectedUser.id).child(formattedDate)
-          .on('value', function (snap) {
-            $scope.chartSpeeds.dataset[0].data[serieNumber] = {};
-            $scope.chartSpeeds.dataset[1].data[serieNumber] = {};
-            $scope.chartSpeeds.dataset[2].data[serieNumber] = {};
-            var items = snap.val();
-            console.log(formattedDate, items);
-            if (items == null) {
-              items = {
-                idle: 0,
-                walk: 0,
-                run: 0
-              }
+      FirebaseService.getDBConnection().child('physical_activity').child($scope.selectedUser.id).child(formattedDate)
+        .once('value', function (snap) {
+          $scope.chartSpeeds.dataset[0].data[serieNumber] = {};
+          $scope.chartSpeeds.dataset[1].data[serieNumber] = {};
+          $scope.chartSpeeds.dataset[2].data[serieNumber] = {};
+          var items = snap.val();
+          if (items == null) {
+            items = {
+              idle: 0,
+              walk: 0,
+              run: 0
             }
-            $scope.chartSpeeds.dataset[0].data[serieNumber] = ({label: 'Idle', value: items.idle});
-            $scope.chartSpeeds.dataset[1].data[serieNumber] = ({label: 'Andar', value: items.walk});
-            $scope.chartSpeeds.dataset[2].data[serieNumber] = ({label: 'Correr', value: items.run});
-          });
-      } else {
-        FirebaseService.getDBConnection().child('physical_activity').child($scope.selectedUser.id).child(formattedDate)
-          .once('value', function (snap) {
-            $scope.chartSpeeds.dataset[0].data[serieNumber] = {};
-            $scope.chartSpeeds.dataset[1].data[serieNumber] = {};
-            $scope.chartSpeeds.dataset[2].data[serieNumber] = {};
-            var items = snap.val();
-            console.log(formattedDate, items);
-            if (items == null) {
-              items = {
-                idle: 0,
-                walk: 0,
-                run: 0
-              }
+          }
+          if (items == null) {
+            items = {
+              idle: 0,
+              walk: 0,
+              run: 0
             }
-            if (items == null) {
-              items = {
-                idle: 0,
-                walk: 0,
-                run: 0
-              }
-            }
-            console.log(serieNumber);
-            $scope.chartSpeeds.dataset[0].data[serieNumber] = ({label: 'Idle', value: items.idle});
-            $scope.chartSpeeds.dataset[1].data[serieNumber] = ({label: 'Andar', value: items.walk});
-            $scope.chartSpeeds.dataset[2].data[serieNumber] = ({label: 'Correr', value: items.run});
-          });
-      }
+          }
+          $scope.chartSpeeds.dataset[0].data[serieNumber] = ({label: 'Idle', value: items.idle});
+          $scope.chartSpeeds.dataset[1].data[serieNumber] = ({label: 'Andar', value: items.walk});
+          $scope.chartSpeeds.dataset[2].data[serieNumber] = ({label: 'Correr', value: items.run});
+        });
+
     };
 
     $scope.nextWeek = function () {
@@ -692,6 +669,16 @@ angular.module('app.controllers', [])
           modal.show();
         });
       $scope.$on('userSelected', function (e, user) {
+        $scope.physicalActivity = {
+          classPercentage: '0',
+          labelPercentage: '',
+          classWeeks: '',
+          labelWeeks: '0 / 0'
+        };
+        $scope.physicalActivityWeeks = 0;
+        $scope.physicalActivityPercentage = 0;
+        $scope.physicalActivityTotalWeeks = 0;
+
         $scope.selectedUser = user;
         $scope.selectedUser.formattedBirthdate = $scope.getUserFormattedDate($scope.selectedUser.birthdate);
 
@@ -727,13 +714,142 @@ angular.module('app.controllers', [])
             $scope.$apply();
           }
         });
+        $scope.calculatePhysicalActivityStats = function (recomendation) {
+          var startDate = $scope.getFormattedDateSpeed(recomendation.date);
+          var dateDate = new Date(recomendation.date);
+          var maxDate = new Date();
+
+          var auxDay = 0;
+          var auxWeek = 0;
+          var dates = [];
+          dates[0] = {
+            startDate: recomendation.date,
+            endDate: dateDate.setDate(dateDate.getDate() + 1),
+            days: []
+          };
+          dates[0].days[0] = {date: recomendation.date, formattedDate: startDate};
+          var nextDate = new Date(recomendation.date);
+          while (nextDate.getTime() < maxDate.getTime()) {
+            if (!dates[auxWeek]) {
+              dateDate = new Date(nextDate.getTime());
+              dates[auxWeek] = {
+                startDate: nextDate.getTime(),
+                formattedStartDate: $scope.getFormattedDateSpeed(nextDate.getTime()),
+                endDate: dateDate.setDate(dateDate.getDate() + 7),
+                formattedEndDate: $scope.getFormattedDateSpeed(dateDate.getTime()),
+                days: []
+              };
+            }
+            nextDate.setDate(nextDate.getDate() + 1);
+            var formattedDate = $scope.getFormattedDateSpeed(nextDate.getTime());
+            if (++auxDay == 7) {
+              auxWeek++;
+              auxDay = 0;
+              continue;
+            }
+            dates[auxWeek].days[auxDay] = {date: recomendation.date, formattedDate: formattedDate};
+          }
+          $scope.physicalActivityTotalWeeks = dates.length;
+          for (var i = 0; i < dates.length; i++) {
+            var obj = dates[i];
+            FirebaseService.getDBConnection().child('physical_activity').child($scope.selectedUser.id)
+              .startAt(obj.formattedStartDate)
+              .endAt(obj.formattedEndDate)
+              .once('value', function (snap) {
+
+                var physicalActivityTotalSeconds = 0;
+                var frequencies = {};
+                for (var j = 0; j < recomendation.exercises.length; j++) {
+                  var obj1 = recomendation.exercises[j];
+                  //console.log(obj1);
+                  frequencies[obj1.type.key] = {
+                    duration: obj1.duration,
+                    durationPerformed: 0,
+                    frequency: obj1.frequency,
+                    frequencyPerformed: 0
+                  };
+                  physicalActivityTotalSeconds += obj1.duration * obj1.frequency;
+                }
+
+                //console.log(frequencies);
+
+                var items = snap.val();
+                if (!items || items == null) {
+                  return;
+                }
+
+                var itemsArray = Object.keys(items).map(function (key) {
+                  return items[key]
+                });
+
+                var physicalSecondsAux = 0;
+                for (var x = 0; x < itemsArray.length; x++) {
+                  var obj2 = itemsArray[x];
+                  if (obj2 != null) {
+                    console.log(obj2);
+                    if (frequencies[PhysicalActivityType.WALK.key]) {
+                      frequencies[PhysicalActivityType.WALK.key].durationPerformed += (!obj2.walk ? 0 : obj2.walk);
+                      physicalSecondsAux += (!obj2.walk ? 0 : obj2.walk);
+                      if (obj2.walk && obj2.walk >= frequencies[PhysicalActivityType.WALK.key].duration) {
+                        frequencies[PhysicalActivityType.WALK.key].frequencyPerformed++;
+                      }
+                    }
+                    if (frequencies[PhysicalActivityType.RUN.key]) {
+                      frequencies[PhysicalActivityType.RUN.key].durationPerformed += (!obj2.run ? 0 : obj2.run);
+                      physicalSecondsAux += (!obj2.run ? 0 : obj2.run);
+                      if (obj2.run && obj2.run >= frequencies[PhysicalActivityType.RUN.key].duration) {
+                        frequencies[PhysicalActivityType.RUN.key].frequencyPerformed++;
+                      }
+                    }
+                    console.log(frequencies[PhysicalActivityType.RUN.key]);
+                    console.log(frequencies);
+                  }
+                }
+
+                console.log(frequencies);
+
+
+                var frequenciesArray = Object.keys(frequencies).map(function (key) {
+                  return frequencies[key]
+                });
+
+                var addValidWeek = true;
+                for (var c = 0; c < frequenciesArray.length; c++) {
+                  var obj3 = frequenciesArray[c];
+                  if (obj3 && obj3.frequency !== obj3.frequencyPerformed) {
+                    //addValidWeek = false;
+                    break;
+                  }
+                }
+                if (addValidWeek) {
+                  $scope.physicalActivityWeeks++;
+                }
+
+                console.log(physicalSecondsAux);
+                console.log("----");
+                console.log(physicalActivityTotalSeconds);
+                $scope.physicalActivityPercentage = physicalSecondsAux * 100 / physicalActivityTotalSeconds;
+
+                $scope.physicalActivity = {
+                  classPercentage: $scope.physicalActivityPercentage < 75 ? 'circle-red' : $scope.physicalActivityPercentage < 100 ? 'circle-orange' : 'circle-green',
+                  labelPercentage: $scope.physicalActivityPercentage > 100 ? '> 100%' : $scope.physicalActivityPercentage + '%',
+                  classWeeks: $scope.physicalActivityTotalWeeks / 2 > $scope.physicalActivityWeeks ? 'circle-red' : $scope.physicalActivityTotalWeeks < $scope.physicalActivityWeeks ? 'circle-green' : 'circle-orange',
+                  labelWeeks: $scope.physicalActivityWeeks + " / " + $scope.physicalActivityTotalWeeks
+                };
+
+                if (!$scope.$$phase) {
+                  $scope.$apply();
+                }
+              });
+
+          }
+
+        };
 
 
         RecomendationService.getCurrentRecomendation($scope.selectedUser.id, function (recomendation) {
           if (recomendation) {
             $scope.currentRecomendation = recomendation.toJson();
-            console.log($scope.currentRecomendation);
-
             for (var i = 0; i < $scope.currentRecomendation.exercises.length; i++) {
               var obj = $scope.currentRecomendation.exercises[i];
 
@@ -773,6 +889,7 @@ angular.module('app.controllers', [])
                 ]
               }
             ];
+            $scope.calculatePhysicalActivityStats(recomendation);
           }
         });
 

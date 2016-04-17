@@ -62,6 +62,63 @@
       <div id="user-data-pnl" class="col col-75">
         <div class="row responsive-lg">
           <div class="col">
+
+            <div class="row">
+              <div class="col">
+                <div class="positive">
+                  <div class="left-border positive-border card">
+                    <div class="row">
+                      <div class="col">
+                        <p class="text-center">Atividade Completada</p>
+                        <div class="circle circle-green" ng-class="physicalActivity.classPercentage">
+                          {{physicalActivity.labelPercentage}}
+                        </div>
+                      </div>
+                      <div class="col">
+                        <p class="text-center">Semanas Cumpridas</p>
+                        <div class="circle circle-green" ng-class="physicalActivity.classWeeks">
+                          {{physicalActivity.labelWeeks}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="left-border positive-border card">
+                  <div class="item item-body">
+                    <section id="Steps" class="steps-section">
+                      <h2 class="steps-header">
+                        Peso / IMC
+                      </h2>
+
+                      <div class="steps-timeline">
+                        <div class="{{$index === 0 ? 'steps-one' : $index === 1 ? 'steps-two' : 'steps-three'}}"
+                             ng-repeat="dt in chartWeight.data">
+                          <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt=""/>
+                          <h3 class="steps-name">
+                            {{chartWeight.labels[$index]}}
+                          </h3>
+                          <div class="steps-description">
+                            <p><span class="positive">Peso:</span> {{dt.weight}} Kg</p>
+                            <p><span class="positive">IMC:</span> {{dt.imc}}</p>
+                          </div>
+                        </div>
+                      </div><!-- /.steps-timeline -->
+
+                    </section>
+                    <!--<canvas id="lineWeight" class="chart chart-line" chart-data="chartWeight.data"-->
+                    <!--chart-labels="chartWeight.labels" chart-legend="false"-->
+                    <!--chart-series="chartWeight.series" chart-colours="chartWeight.colours">-->
+                    <!--</canvas>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
             <div class="left-border positive-border card">
               <div class="item item-body">Atividade Física<span class="positive">[%]</span>
                 <div class="text-right">
@@ -81,37 +138,6 @@
                               categories="{{chartSpeeds.categories}}"
                               dataset="{{chartSpeeds.dataset}}">
                 </fusioncharts>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="left-border positive-border card">
-              <div class="item item-body">
-                <section id="Steps" class="steps-section">
-                  <h2 class="steps-header">
-                    Peso / IMC
-                  </h2>
-
-                  <div class="steps-timeline">
-                    <div class="{{$index === 0 ? 'steps-one' : $index === 1 ? 'steps-two' : 'steps-three'}}"
-                         ng-repeat="dt in chartWeight.data">
-                      <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt=""/>
-                      <h3 class="steps-name">
-                        {{chartWeight.labels[$index]}}
-                      </h3>
-                      <div class="steps-description">
-                        <p><span class="positive">Peso:</span> {{dt.weight}} Kg</p>
-                        <p><span class="positive">IMC:</span> {{dt.imc}}</p>
-                      </div>
-                    </div>
-                  </div><!-- /.steps-timeline -->
-
-                </section>
-                <!--<canvas id="lineWeight" class="chart chart-line" chart-data="chartWeight.data"-->
-                <!--chart-labels="chartWeight.labels" chart-legend="false"-->
-                <!--chart-series="chartWeight.series" chart-colours="chartWeight.colours">-->
-                <!--</canvas>-->
               </div>
             </div>
           </div>
