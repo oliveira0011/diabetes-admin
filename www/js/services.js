@@ -452,7 +452,7 @@ angular.module('app.services', [])
     };
     return messagesService;
   })
-  .service('RecomendationService', function (FirebaseService, Recomendation, PhysicalActivity, PhysicalActivityType, MessageService, Message, MessageType) {
+  .service('RecomendationService', function (FirebaseService, Recomendation, PhysicalActivity, PhysicalActivityType, MessageService, Message, MessageType, RecomendationLevel) {
     var recomendationService = {};
     recomendationService.addRecomendation = function (userId, recomendation, handler) {
       if (!recomendation instanceof Recomendation) {
@@ -475,9 +475,10 @@ angular.module('app.services', [])
         var value = snap.val();
         for (var first in value) {
           if (value.hasOwnProperty(first)) {
-            var rec = new Recomendation(value[first].exercises);
+            var rec = new Recomendation(RecomendationLevel[value[first].level], value[first].exercises);
             rec.id = first;
             rec.date = value[first].date;
+            console.log(rec);
             handler(rec);
             return;
           }
@@ -495,7 +496,7 @@ angular.module('app.services', [])
         var arrayToReturn = [];
         for (var first in value) {
           if (value.hasOwnProperty(first)) {
-            var rec = new Recomendation(value[first].exercises);
+            var rec = new Recomendation(RecomendationLevel[value[first].level], value[first].exercises);
             rec.id = first;
             rec.date = value[first].date;
             arrayToReturn.push(rec);

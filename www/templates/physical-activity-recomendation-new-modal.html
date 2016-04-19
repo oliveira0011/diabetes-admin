@@ -5,6 +5,12 @@
   </ion-header-bar>
   <ion-content>
     <form name="form" novalidate ng-submit="sendMessage(form)" ng-controller="PhysicalActivityCtrl">
+      <label class="item  item-input-inset item-select">
+        <div class="input-label positive">
+          Tipo de recomendação
+        </div>
+        <select name="level" ng-options="level.value for level in recomendationLevels" ng-model="recomendation.level" ng-change="updateRecomendation()"></select>
+      </label>
       <div class="row responsive-md" ng-repeat="rec in recomendation.exercises">
         <div class="col col-30">
           <label class="item item-input-inset">

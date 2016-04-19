@@ -33,8 +33,15 @@ angular.module('app.factories', [])
     };
     return PhysicalActivity;
   })
+  .factory('RecomendationLevel', function () {
+    return {
+      CUSTOM: {key: "CUSTOM", value: "Customizado"},
+      MODERATE: {key: "MODERATE", value: "Moderada"},
+      INTENSE: {key: "INTENSE", value: "Intensa"}
+    }
+  })
   .factory('Recomendation', function (PhysicalActivity) {
-    var Recomendation = function (exercises) {
+    var Recomendation = function (level, exercises) {
       this.id = 0;
       this.exercises = [];
       if (!exercises instanceof Array.constructor) {
@@ -45,6 +52,7 @@ angular.module('app.factories', [])
         this.exercises[i] = new PhysicalActivity(obj.frequency, obj.duration, obj.type);
       }
       this.date = new Date().getTime();
+      this.level = level;
     };
     Recomendation.prototype.toJson = function () {
       var exercises = [];
@@ -55,9 +63,11 @@ angular.module('app.factories', [])
           duration: obj.duration,
           type: obj.type};
       }
+      console.log(this.level);
       return {
         exercises: exercises,
-        date: this.date
+        date: this.date,
+        level: this.level ? this.level.key : undefined
       }
     };
     return Recomendation;

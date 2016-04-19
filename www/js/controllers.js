@@ -312,32 +312,7 @@ angular.module('app.controllers', [])
     $scope.cholesterolRecords = [];
     $scope.weightRecords = [];
     $scope.currentWeek = new Date().getTime();
-    $scope.currentWeekFormatted = $scope.getFormattedDateSpeed($scope.currentWeek - 604800000) + " - " + $scope.getFormattedDateSpeed($scope.currentWeek);
-
-
-    $scope.speeds = [
-      {
-        date: "31/01/2016 - 06/02/2016",
-        walk: [20, 10, 0, 0, 15, 0, 0],
-        run: [10, 10, 0, 0, 10, 0, 0]
-      },
-      {
-        date: "07/02/2016 - 13/02/2016",
-        walk: [10, 15, 0, 0, 15, 0, 0],
-        run: [10, 10, 0, 0, 10, 0, 0]
-      },
-      {
-        date: "14/02/2016 - 20/02/2016",
-        walk: [20, 15, 0, 0, 15, 10, 15],
-        run: [10, 10, 0, 0, 10, 5, 5]
-      },
-      {
-        date: "21/02/2016 - 27/02/2016",
-        walk: [20, 30, 0, 0, 15, 20, 20],
-        run: [10, 8, 0, 0, 10, 5, 5]
-      }
-    ];
-
+    $scope.currentWeekFormatted = $scope.getFormattedDateSpeed($scope.currentWeek - 519000000) + " - " + $scope.getFormattedDateSpeed($scope.currentWeek);
 
     $scope.chartCholesterol = initChart('', '', "#DECF3F");
     $scope.chartWeight = initChart('', '', "#B276B2, #F17CB0");
@@ -396,7 +371,7 @@ angular.module('app.controllers', [])
     ];
 
     var fillSerie = function (serieNumber, date) {
-      serieNumber = 6 - serieNumber;
+      //serieNumber = 6 - serieNumber;
       var formattedDate = $scope.getFormattedDateSpeed(date - (86400000 * serieNumber));
       $scope.chartSpeeds.categories[0].category[serieNumber] = {label: formattedDate};
       FirebaseService.getDBConnection().child('physical_activity').child($scope.selectedUser.id).child(formattedDate)
@@ -422,20 +397,23 @@ angular.module('app.controllers', [])
           $scope.chartSpeeds.dataset[0].data[serieNumber] = ({label: 'Idle', value: items.idle});
           $scope.chartSpeeds.dataset[1].data[serieNumber] = ({label: 'Andar', value: items.walk});
           $scope.chartSpeeds.dataset[2].data[serieNumber] = ({label: 'Correr', value: items.run});
+          if(!$scope.$$phase){
+            $scope.$apply();
+          }
         });
 
     };
 
     $scope.nextWeek = function () {
       $scope.currentWeek += 604800000;
-      $scope.currentWeekFormatted = $scope.getFormattedDateSpeed($scope.currentWeek - 604800000) + " - " + $scope.getFormattedDateSpeed($scope.currentWeek);
+      $scope.currentWeekFormatted = $scope.getFormattedDateSpeed($scope.currentWeek - 519000000) + " - " + $scope.getFormattedDateSpeed($scope.currentWeek);
       for (var i = 0; i < 7; i++) {
         fillSerie(i, new Date($scope.currentWeek));//week millis
       }
     };
     $scope.previousWeek = function () {
       $scope.currentWeek -= 604800000;
-      $scope.currentWeekFormatted = $scope.getFormattedDateSpeed($scope.currentWeek - 604800000) + " - " + $scope.getFormattedDateSpeed($scope.currentWeek);
+      $scope.currentWeekFormatted = $scope.getFormattedDateSpeed($scope.currentWeek - 519000000) + " - " + $scope.getFormattedDateSpeed($scope.currentWeek);
       for (var i = 0; i < 7; i++) {
         fillSerie(i, new Date($scope.currentWeek));//week millis
       }
@@ -688,10 +666,7 @@ angular.module('app.controllers', [])
         $scope.weightRecords = [];
 
         $scope.currentWeek = new Date().getTime();
-        $scope.currentWeekFormatted = $scope.getFormattedDateSpeed($scope.currentWeek - 604800000) + " - " + $scope.getFormattedDateSpeed($scope.currentWeek);
-        for (var i = 0; i < 7; i++) {
-          fillSerie(i, $scope.currentWeek);
-        }
+        $scope.currentWeekFormatted = $scope.getFormattedDateSpeed($scope.currentWeek - 519000000) + " - " + $scope.getFormattedDateSpeed($scope.currentWeek);
 
         if ($scope.chartWeight) {
           $scope.chartWeight = {
@@ -761,7 +736,6 @@ angular.module('app.controllers', [])
                 var frequencies = {};
                 for (var j = 0; j < recomendation.exercises.length; j++) {
                   var obj1 = recomendation.exercises[j];
-                  //console.log(obj1);
                   frequencies[obj1.type.key] = {
                     duration: obj1.duration,
                     durationPerformed: 0,
@@ -771,7 +745,6 @@ angular.module('app.controllers', [])
                   physicalActivityTotalSeconds += obj1.duration * obj1.frequency;
                 }
 
-                //console.log(frequencies);
 
                 var items = snap.val();
                 if (!items || items == null) {
@@ -786,7 +759,6 @@ angular.module('app.controllers', [])
                 for (var x = 0; x < itemsArray.length; x++) {
                   var obj2 = itemsArray[x];
                   if (obj2 != null) {
-                    console.log(obj2);
                     if (frequencies[PhysicalActivityType.WALK.key]) {
                       frequencies[PhysicalActivityType.WALK.key].durationPerformed += (!obj2.walk ? 0 : obj2.walk);
                       physicalSecondsAux += (!obj2.walk ? 0 : obj2.walk);
@@ -801,13 +773,8 @@ angular.module('app.controllers', [])
                         frequencies[PhysicalActivityType.RUN.key].frequencyPerformed++;
                       }
                     }
-                    console.log(frequencies[PhysicalActivityType.RUN.key]);
-                    console.log(frequencies);
                   }
                 }
-
-                console.log(frequencies);
-
 
                 var frequenciesArray = Object.keys(frequencies).map(function (key) {
                   return frequencies[key]
@@ -824,10 +791,6 @@ angular.module('app.controllers', [])
                 if (addValidWeek) {
                   $scope.physicalActivityWeeks++;
                 }
-
-                console.log(physicalSecondsAux);
-                console.log("----");
-                console.log(physicalActivityTotalSeconds);
                 $scope.physicalActivityPercentage = physicalSecondsAux * 100 / physicalActivityTotalSeconds;
 
                 $scope.physicalActivity = {
@@ -849,7 +812,15 @@ angular.module('app.controllers', [])
 
         RecomendationService.getCurrentRecomendation($scope.selectedUser.id, function (recomendation) {
           if (recomendation) {
+            var level = recomendation.level;
             $scope.currentRecomendation = recomendation.toJson();
+            $scope.currentRecomendation.level = level;
+
+            for (var k = 0; k < 7; k++) {
+              fillSerie(k, $scope.currentWeek);
+            }
+
+
             for (var i = 0; i < $scope.currentRecomendation.exercises.length; i++) {
               var obj = $scope.currentRecomendation.exercises[i];
 
@@ -1080,12 +1051,14 @@ angular.module('app.controllers', [])
       MessageService.addMessage($scope.selectedUser.id, new Message($scope.message.title, $scope.message.body, MessageType.CUSTOM), handler());
     }
   })
-  .controller('PhysicalActivityCtrl', function ($scope, $ionicLoading, ModalService, RecomendationService, Recomendation, PhysicalActivityType) {
+  .controller('PhysicalActivityCtrl', function ($scope, $ionicLoading, ModalService, RecomendationService, Recomendation, PhysicalActivityType, RecomendationLevel) {
 
 
     RecomendationService.getCurrentRecomendation($scope.selectedUser.id, function (recomendation) {
       if (recomendation && recomendation !== null) {
+        var level = recomendation.level;
         $scope.recomendation = recomendation.toJson();
+        $scope.recomendation.level = level;
       } else {
         $scope.recomendation = {
           exercises: [{
@@ -1099,7 +1072,9 @@ angular.module('app.controllers', [])
     $scope.recomendationsTypes = Object.keys(PhysicalActivityType).map(function (key) {
       return PhysicalActivityType[key]
     });
-
+    $scope.recomendationLevels = Object.keys(RecomendationLevel).map(function (key) {
+      return RecomendationLevel[key]
+    });
     $scope.getAvailableRecomendationsTypes = function (index, type) {
       var optionsToReturn = $scope.recomendationsTypes.slice(0);
       for (var i = 0; i < $scope.recomendation.exercises.length; i++) {
@@ -1118,7 +1093,7 @@ angular.module('app.controllers', [])
           }
         }
       }
-      if (!$scope.recomendation.exercises[index].type) {
+      if ($scope.recomendation.exercises[index] && !$scope.recomendation.exercises[index].type) {
         $scope.recomendation.exercises[index].type = optionsToReturn[0];
       }
       return optionsToReturn;
@@ -1133,6 +1108,29 @@ angular.module('app.controllers', [])
       $scope.recomendation.exercises.splice(index, 1);
     };
 
+    $scope.updateRecomendation = function () {
+      if ($scope.recomendation.level === RecomendationLevel.INTENSE) {
+        $scope.recomendation.exercises = [{
+          duration: 10,
+          frequency: 5,
+          type: PhysicalActivityType.WALK
+        },{
+          duration: 20,
+          frequency: 5,
+          type: PhysicalActivityType.RUN
+        }];
+      } else if ($scope.recomendation.level === RecomendationLevel.MODERATE) {
+        $scope.recomendation.exercises = [{
+          duration: 10,
+          frequency: 3,
+          type: PhysicalActivityType.WALK
+        },{
+          duration: 10,
+          frequency: 3,
+          type: PhysicalActivityType.RUN
+        }];
+      }
+    };
 
     $scope.closeModal = function () {
       ModalService.close();
@@ -1146,7 +1144,7 @@ angular.module('app.controllers', [])
         $ionicLoading.hide();
         ModalService.close();
       };
-      RecomendationService.addRecomendation($scope.selectedUser.id, new Recomendation($scope.recomendation.exercises), handler());
+      RecomendationService.addRecomendation($scope.selectedUser.id, new Recomendation($scope.recomendation.level, $scope.recomendation.exercises), handler());
     };
   })
   .controller('PhysicalActivityViewCtrl', function ($scope, $ionicLoading, ModalService, RecomendationService, Recomendation, PhysicalActivityType) {
@@ -1174,7 +1172,12 @@ angular.module('app.controllers', [])
       if (recomendations && recomendations !== null) {
         for (var i = 0; i < recomendations.length; i++) {
           var obj = recomendations[i];
-          $scope.recomendations.push(obj.toJson());
+
+          var level = obj.level;
+
+          var aux = obj.toJson();
+          aux.level = level;
+          $scope.recomendations.push(aux);
         }
         $scope.currentIndex = $scope.recomendations.length - 2;
         $scope.recomendation = $scope.recomendations[$scope.currentIndex];
