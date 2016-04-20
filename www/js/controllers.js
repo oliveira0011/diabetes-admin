@@ -1053,6 +1053,9 @@ angular.module('app.controllers', [])
   })
   .controller('PhysicalActivityCtrl', function ($scope, $ionicLoading, ModalService, RecomendationService, Recomendation, PhysicalActivityType, RecomendationLevel) {
 
+    $scope.updateRecomendationLevel = function(){
+      $scope.recomendation.level = RecomendationLevel.CUSTOM;
+    };
 
     RecomendationService.getCurrentRecomendation($scope.selectedUser.id, function (recomendation) {
       if (recomendation && recomendation !== null) {
@@ -1103,9 +1106,11 @@ angular.module('app.controllers', [])
         duration: 15,
         frequency: 2
       });
+      $scope.updateRecomendationLevel();
     };
     $scope.removeExercise = function (index) {
       $scope.recomendation.exercises.splice(index, 1);
+      $scope.updateRecomendationLevel();
     };
 
     $scope.updateRecomendation = function () {

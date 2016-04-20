@@ -14,7 +14,7 @@
       <div class="row responsive-md" ng-repeat="rec in recomendation.exercises">
         <div class="col col-30">
           <label class="item item-input-inset">
-            <input placeholder="Duração" required ng-model="rec.duration" name="title" type="number">
+            <input placeholder="Duração" required ng-model="rec.duration" name="title" type="number"  ng-change="updateRecomendationLevel()">
             <span class="positive">Minutos</span>
           </label>
         </div>
@@ -24,12 +24,12 @@
               A
             </div>
             <select name="type" ng-options="type.value for type in getAvailableRecomendationsTypes($index, rec.type) track by type.key"
-                    ng-model="rec.type"></select>
+                    ng-model="rec.type"  ng-change="updateRecomendationLevel()"></select>
           </label>
         </div>
         <div class="col col-30">
           <label class="item item-input-inset">
-            <input placeholder="Frequência" required ng-model="rec.frequency" name="frequency" type="number" max="7">
+            <input placeholder="Frequência" required ng-model="rec.frequency" name="frequency" type="number" max="7" ng-change="updateRecomendationLevel()">
             <span class="positive">vezes por Semana</span>
           </label>
           <div ng-messages="form.frequency.$error" ng-if="form.$invalid && form.$submitted" role="alert">
