@@ -394,9 +394,9 @@ angular.module('app.controllers', [])
               run: 0
             }
           }
-          $scope.chartSpeeds.dataset[0].data[serieNumber] = ({label: 'Idle', value: items.idle});
-          $scope.chartSpeeds.dataset[1].data[serieNumber] = ({label: 'Andar', value: items.walk});
-          $scope.chartSpeeds.dataset[2].data[serieNumber] = ({label: 'Correr', value: items.run});
+          //$scope.chartSpeeds.dataset[0].data[serieNumber] = ({label: 'Idle', value: items.idle});
+          $scope.chartSpeeds.dataset[1].data[serieNumber] = ({label: 'Andar', value: items.walk/60});
+          $scope.chartSpeeds.dataset[2].data[serieNumber] = ({label: 'Correr', value: items.run/60});
           if(!$scope.$$phase){
             $scope.$apply();
           }
